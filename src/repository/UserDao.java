@@ -119,6 +119,7 @@ public class UserDao {
 		}
 		return result;
 	}
+	
 	public int deleteUser(String userId){
 		PreparedStatement pstmt=null;
 		int result=0;
