@@ -1,16 +1,18 @@
 package vo;
 
+import java.util.Date;
+
 public class User {
 	private String userCd;
 	private String userId;
 	private String pw;
 	private String nickname;
 	private String email;
-	private String ymd;
+	private Date ymd;
 	
 	public User(){
 	}
-	public User(String userCd, String userId, String pw, String nickname, String email, String ymd){
+	public User(String userCd, String userId, String pw, String nickname, String email, Date ymd){
 		this.userCd = userCd;
 		this.userId = userId;
 		this.pw = pw;
@@ -49,10 +51,10 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getYmd() {
+	public Date getYmd() {
 		return ymd;
 	}
-	public void setYmd(String ymd) {
+	public void setYmd(Date ymd) {
 		this.ymd = ymd;
 	}
 }

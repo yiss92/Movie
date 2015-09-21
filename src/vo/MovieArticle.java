@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.Date;
+
 public class MovieArticle {
 	private String movieTitle;
 	private String genre1;
@@ -9,13 +11,13 @@ public class MovieArticle {
 	private String production;
 	private String story;
 	private int readCount;
-	private String ymd;
+	private Date ymd;
 
 	public MovieArticle(){
 	}
 
 	public MovieArticle(String movieTitle, String genre1, String genre2, String director, String star,
-			String production, String story, int readCount, String ymd) {
+			String production, String story, int readCount, Date ymd) {
 		this.movieTitle = movieTitle;
 		this.genre1 = genre1;
 		this.genre2 = genre2;
@@ -75,10 +77,10 @@ public class MovieArticle {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-	public String getYmd() {
+	public Date getYmd() {
 		return ymd;
 	}
-	public void setYmd(String ymd) {
+	public void setYmd(Date ymd) {
 		this.ymd = ymd;
 	}
 }

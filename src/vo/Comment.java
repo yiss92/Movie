@@ -1,16 +1,18 @@
 package vo;
 
+import java.util.Date;
+
 public class Comment {
 	private int commentNo;
 	private int articleNo;
 	private int comment_reply_no;
 	private String userId;
 	private String comment;
-	private String ymd;
+	private Date ymd;
 	
 	public Comment(){
 	}
-	public Comment(int commentNo, int articleNo, int comment_reply_no, String userId, String comment, String ymd) {
+	public Comment(int commentNo, int articleNo, int comment_reply_no, String userId, String comment, Date ymd) {
 		this.commentNo = commentNo;
 		this.articleNo = articleNo;
 		this.comment_reply_no = comment_reply_no;
@@ -49,10 +51,10 @@ public class Comment {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getYmd() {
+	public Date getYmd() {
 		return ymd;
 	}
-	public void setYmd(String ymd) {
+	public void setYmd(Date ymd) {
 		this.ymd = ymd;
 	}
 }

@@ -1,16 +1,18 @@
 package vo;
 
+import java.util.Date;
+
 public class MovieScore {
 	private int commentNo;
 	private String userId;
 	private String movieTitle;
 	private String comment;
 	private int score;
-	private String ymd;
+	private Date ymd;
 
 	public MovieScore(){
 	}
-	public MovieScore(int commentNo, String userId, String movieTitle, String comment, int score, String ymd) {
+	public MovieScore(int commentNo, String userId, String movieTitle, String comment, int score, Date ymd) {
 		this.commentNo = commentNo;
 		this.userId = userId;
 		this.movieTitle = movieTitle;
@@ -49,10 +51,10 @@ public class MovieScore {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public String getYmd() {
+	public Date getYmd() {
 		return ymd;
 	}
-	public void setYmd(String ymd) {
+	public void setYmd(Date ymd) {
 		this.ymd = ymd;
 	}
 }
