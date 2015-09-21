@@ -22,8 +22,16 @@
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>    
 	<script type="text/javascript" src="js/touchTouch.jquery.js"></script>
 	<script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}	</script>
-
-	<script>		
+	<style type="text/css">
+ 		.LogInForm{ 
+  		position: relative; 
+  		right: -550px; 
+/*  		top: -800px; */ 
+  	}  
+	</style>
+	
+	<script>
+	
 		 jQuery(window).load(function() {	
 		 $x = $(window).width();		
 	if($x > 1024)
@@ -54,6 +62,19 @@
     <div class="spinner"></div> 
 <!--============================== header =================================-->
 <header>
+<form action="" class="LogInForm">
+ 	<table border="1">
+ 		<tr>
+ 			<td>ID</td>
+ 			<td><input type = "text" name = "id" size = "10"></td>
+ 			<td>PW</td>
+ 			<td><input type = "password" name = "pw" size = "10"></td>
+ 			<td><input type = "submit" value = "로그인"></td>
+ 			<td><input type = "submit" value = "회원가입"></td>
+ 		</tr>	
+ 	</table>
+ </form>
+
       <div class="container clearfix">
     <div class="row">
           <div class="span12">
@@ -96,6 +117,7 @@
             <li> <img src="img/slide-5.jpg" alt="" > </li>
           </ul>
             </div>
+            
         <span id="responsiveFlag"></span>
         <div class="block-slogan">
               <h2>Welcome!</h2>
