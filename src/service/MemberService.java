@@ -16,7 +16,7 @@ public class MemberService {
 	}
 
 	public int registeMember(HttpServletRequest request) throws ClassNotFoundException, SQLException {
-
+		
 		int member_id = Integer.parseInt(request.getParameter("member_id"));
 
 		return 0;
