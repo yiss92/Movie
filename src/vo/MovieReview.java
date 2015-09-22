@@ -13,7 +13,7 @@ public class MovieReview {
 	
 	public MovieReview(){
 	}
-	public MovieReview(int atricleNo, String userId, String movieTitle, String articleTitle, String review,
+	public MovieReview(int articleNo, String userId, String movieTitle, String articleTitle, String review,
 			int readCount, Date ymd) {
 		this.articleNo = articleNo;
 		this.userId = userId;
@@ -27,7 +27,7 @@ public class MovieReview {
 	public int getArticleNo() {
 		return articleNo;
 	}
-	public void setAticleNo(int articleNo) {
+	public void setArticleNo(int articleNo) {
 		this.articleNo = articleNo;
 	}
 	public String getUserId() {
