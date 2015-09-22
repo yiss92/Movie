@@ -107,7 +107,7 @@ public class FreeDao{
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, freeArticle.getArticleTitle());
 			pstmt.setString(2, freeArticle.getContent());
-			
+			pstmt.setInt(3, freeArticle.getArticleNo());
 			result=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("FreeDao updateFree error");
