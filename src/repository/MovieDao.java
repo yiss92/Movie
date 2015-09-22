@@ -27,7 +27,7 @@ public class MovieDao{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			if(con==null){
-				String url = "jdbc:mysql://203.236.209.87:3306/board_db";
+				String url = "jdbc:mysql://203.236.209.87:3306/movie_db";
 				con = DriverManager.getConnection(url,"root","hanbit");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
