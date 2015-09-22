@@ -134,7 +134,7 @@ public class MemberService {
 			throw new Exception("존재하지 않는 ID 수정 불가!");
 		}
 
-		if (member_id == original.getUserId()) {
+		if (member_id.equals(original.getUserId())) {
 			dao.deleteUser(member_id); // articleId db에 있는 거 삭제시킴.
 			dao.closeCon();
 		} else {
