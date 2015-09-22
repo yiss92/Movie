@@ -50,18 +50,20 @@ public class MovieDao{
 		PreparedStatement pstmt = null;
 		int result=0;
 		try {
-			String sql="insert into MOVIE_TB( MOVIE_TITLE, GENRE_1, GENRE_2, DIRECTOR, STAR, PRODUCTION, STORY, READ_COUNT, YMD)"
-					+"(?,?,?,?,?,?,?,?,?)";
+			String sql="insert into MOVIE_TB( MOVIE_TITLE, MOVIE_IMAGE, GENRE_1, GENRE_2, DIRECTOR, STAR, PRODUCTION, STORY, READ_COUNT, YMD, OPEN_CHECK)"
+					+"(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, movieArticle.getMovieTitle());
-			pstmt.setString(2, movieArticle.getGenre1());
-			pstmt.setString(3, movieArticle.getGenre2());
-			pstmt.setString(4, movieArticle.getDirector());
-			pstmt.setString(5, movieArticle.getStar());
-			pstmt.setString(6, movieArticle.getProduction());
-			pstmt.setString(7, movieArticle.getStory());
-			pstmt.setInt(8, movieArticle.getReadCount());
-			pstmt.setInt(9,  movieArticle.getYmd());
+			pstmt.setString(1, movieArticle.getMovieImage());
+			pstmt.setString(3, movieArticle.getGenre1());
+			pstmt.setString(4, movieArticle.getGenre2());
+			pstmt.setString(5, movieArticle.getDirector());
+			pstmt.setString(6, movieArticle.getStar());
+			pstmt.setString(7, movieArticle.getProduction());
+			pstmt.setString(8, movieArticle.getStory());
+			pstmt.setInt(9, movieArticle.getReadCount());
+			pstmt.setInt(10,  movieArticle.getYmd());
+			pstmt.setInt(11,  movieArticle.getOpenCheck());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("MovieDao insertMovie error");
@@ -86,14 +88,16 @@ public class MovieDao{
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				result.setMovieTitle(rs.getString(1));
-				result.setGenre1(rs.getString(2));
-				result.setGenre2(rs.getString(3));
-				result.setDirector(rs.getString(4));
-				result.setStar(rs.getString(5));
-				result.setProduction(rs.getString(6));
-				result.setStory(rs.getString(7));
-				result.setReadCount(rs.getInt(8));
-				result.setYmd(rs.getInt(9));
+				result.setMovieImage(rs.getString(2));
+				result.setGenre1(rs.getString(3));
+				result.setGenre2(rs.getString(4));
+				result.setDirector(rs.getString(5));
+				result.setStar(rs.getString(6));
+				result.setProduction(rs.getString(7));
+				result.setStory(rs.getString(8));
+				result.setReadCount(rs.getInt(9));
+				result.setYmd(rs.getInt(10));
+				result.setYmd(rs.getInt(11));
 			}
 		} catch (SQLException e) {
 			System.out.println("MovieDao selectMovie error");
