@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action ="movie" method= "post">
+          <table border ="1">
+               <tr >
+                    <td >id: </td >
+                    <td ><input type ="text" name="member_id" size= "10"><br ></td >
+               </tr >
+               <tr >
+                    <td >pw:</td>
+                    <td ><input type ="password" name="member_pw" size= "10"><br ></td >
+               </tr >
+               <tr >
+                    <td colspan ="2"><input type= "submit" value= "로그인"></td >
+                    <input type="hidden" name="type" value="login" >
+               </tr >
+          </table >
+     </form >
+	<a href ="movie?type=joinForm">[회원가입]</a >
+</body>
+</html>
