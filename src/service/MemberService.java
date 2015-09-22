@@ -34,7 +34,7 @@ public class MemberService {
 		String member_email = request.getParameter("email");
 
 		User user = new User();
-		user.setUserCd(member_id);
+		user.setUserId(member_id);
 		user.setPw(member_pw);
 		user.setNickname(member_nic);
 		user.setEmail(member_email);
