@@ -90,7 +90,7 @@ public class UserDao {
 				result.setYmd(rs.getTimestamp(6));
 			}
 		} catch (SQLException e) {
-			System.out.println("UserDao insertUser error");
+			System.out.println("UserDao selectUser error");
 		}finally{
 			try {
 				if(rs!=null){rs.close();}
