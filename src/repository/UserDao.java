@@ -73,8 +73,8 @@ public class UserDao {
 		ResultSet rs=null;
 		User result=new User();
 		try {
-			String sql="select * from USER_TB where USER_ID=?"
-					+"(?)";
+			String sql="select * from USER_TB where USER_ID=?";
+				
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, userId);
 
