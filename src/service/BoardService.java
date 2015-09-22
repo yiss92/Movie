@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import repository.FreeDao;
-import vo.Article;
 import vo.FreeArticle;
 
 public class BoardService {
@@ -108,7 +107,7 @@ public class BoardService {
 //		}
 	}
 	
-	public void deleteArticle(HttpServletRequest request){
+	public void deleteArticle(HttpServletRequest request) throws Exception{
 		
 		String idStr = request.getParameter("article_num");
 		int articleNum = Integer.parseInt(idStr);		
