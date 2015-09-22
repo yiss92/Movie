@@ -1,16 +1,18 @@
 package vo;
 
+import java.util.Date;
+
 public class FreeArticle {
 	private int articleNo;
 	private String userId;
 	private String articleTitle;
 	private String content;
 	private int readCount;
-	private String ymd;
+	private Date ymd;
 	
 	public FreeArticle(){
 	}
-	public FreeArticle(int articleNo, String userId, String articleTitle, String content, int readCount, String ymd) {
+	public FreeArticle(int articleNo, String userId, String articleTitle, String content, int readCount, Date ymd) {
 		super();
 		this.articleNo = articleNo;
 		this.userId = userId;
@@ -50,10 +52,10 @@ public class FreeArticle {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-	public String getYmd() {
+	public Date getYmd() {
 		return ymd;
 	}
-	public void setYmd(String ymd) {
+	public void setYmd(Date ymd) {
 		this.ymd = ymd;
 	}
 }
