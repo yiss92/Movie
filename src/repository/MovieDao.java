@@ -61,7 +61,7 @@ public class MovieDao{
 			pstmt.setString(6, movieArticle.getProduction());
 			pstmt.setString(7, movieArticle.getStory());
 			pstmt.setInt(8, movieArticle.getReadCount());
-			pstmt.setTimestamp(9,new Timestamp(movieArticle.getYmd().getTime()));
+			pstmt.setInt(9,  movieArticle.getYmd());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("MovieDao insertMovie error");
@@ -93,7 +93,7 @@ public class MovieDao{
 				result.setProduction(rs.getString(6));
 				result.setStory(rs.getString(7));
 				result.setReadCount(rs.getInt(8));
-				result.setYmd(rs.getTimestamp(9));
+				result.setYmd(rs.getInt(9));
 			}
 		} catch (SQLException e) {
 			System.out.println("MovieDao selectMovie error");
@@ -110,7 +110,7 @@ public class MovieDao{
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
-			String sql="update MOVIE_TB set GENRE_1=?, GENRE_2=?, DIRECTOR=?, STAR=?, PRODUCTION=?, STORY=? where MOVIE_TITLE=?";
+			String sql="update MOVIE_TB set GENRE_1=?, GENRE_2=?, DIRECTOR=?, STAR=?, PRODUCTION=?, STORY=?, YMD=? where MOVIE_TITLE=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, movieArticle.getGenre1());
 			pstmt.setString(2, movieArticle.getGenre2());
@@ -118,7 +118,8 @@ public class MovieDao{
 			pstmt.setString(4, movieArticle.getStar());
 			pstmt.setString(5, movieArticle.getProduction());
 			pstmt.setString(6, movieArticle.getStory());
-			pstmt.setString(7, movieArticle.getMovieTitle());
+			pstmt.setInt(7, movieArticle.getYmd());
+			pstmt.setString(8, movieArticle.getMovieTitle());
 			
 			result=pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -191,6 +192,7 @@ public class MovieDao{
 				result.setReview(rs.getString(5));
 				result.setReadCount(rs.getInt(6));
 				result.setYmd(rs.getTimestamp(7));
+				
 			}
 		} catch (SQLException e) {
 			System.out.println("MovieDao selectReview error");

@@ -11,13 +11,13 @@ public class MovieArticle {
 	private String production;
 	private String story;
 	private int readCount;
-	private Date ymd;
+	private int ymd;
 
 	public MovieArticle(){
 	}
 
 	public MovieArticle(String movieTitle, String genre1, String genre2, String director, String star,
-			String production, String story, int readCount, Date ymd) {
+			String production, String story, int readCount, int ymd) {
 		this.movieTitle = movieTitle;
 		this.genre1 = genre1;
 		this.genre2 = genre2;
@@ -77,10 +77,10 @@ public class MovieArticle {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-	public Date getYmd() {
+	public int getYmd() {
 		return ymd;
 	}
-	public void setYmd(Date ymd) {
+	public void setYmd(int ymd) {
 		this.ymd = ymd;
 	}
 }
