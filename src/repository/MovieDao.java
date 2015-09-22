@@ -27,7 +27,7 @@ public class MovieDao{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			if(con==null){
-				String url = "jdbc:mysql://203.236.209.87:3306/board_db";
+				String url = "jdbc:mysql://203.236.209.87:3306/movie_db";
 				con = DriverManager.getConnection(url,"root","hanbit");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -51,7 +51,7 @@ public class MovieDao{
 		int result=0;
 		try {
 			String sql="insert into MOVIE_TB( MOVIE_TITLE, MOVIE_IMAGE, GENRE_1, GENRE_2, DIRECTOR, STAR, PRODUCTION, STORY, READ_COUNT, YMD, OPEN_CHECK)"
-					+"(?,?,?,?,?,?,?,?,?,?,?)";
+					+"values(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, movieArticle.getMovieTitle());
 			pstmt.setString(1, movieArticle.getMovieImage());
@@ -159,7 +159,7 @@ public class MovieDao{
 		int result=0;
 		try {
 			String sql="insert into MOVIE_REVIEW_TB( USER_ID, MOVIE_TITLE, ARTICLE_TITLE, REVIEW, YMD)"
-					+"(?,?,?,?,?)";
+					+"values(?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, movieReview.getUserId());
 			pstmt.setString(2, movieReview.getMovieTitle());

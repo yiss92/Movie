@@ -11,8 +11,7 @@ import vo.User;
 
 public class UserDao {
 	private Connection con;
-	
-	// singleton
+
 	private UserDao(){
 	}
 	private static UserDao instance;
@@ -27,7 +26,7 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			if(con==null){
-				String url = "jdbc:mysql://203.236.209.87:3306/board_db";
+				String url = "jdbc:mysql://203.236.209.87:3306/movie_db";
 				con = DriverManager.getConnection(url,"root","hanbit");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -44,13 +43,13 @@ public class UserDao {
 			}
 		}
 	}
-	
+
 	public int insertUser(User user){
 		PreparedStatement pstmt = null;
 		int result=0;
 		try {
 			String sql="insert into USER_TB( USER_CD, USER_ID, PW, NICKNAME, EMAIL, YMD)"
-					+"(?,?,?,?,?,?)";
+					+"values(?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "user");
 			pstmt.setString(2, user.getUserId());
@@ -90,7 +89,7 @@ public class UserDao {
 				result.setYmd(rs.getTimestamp(6));
 			}
 		} catch (SQLException e) {
-			System.out.println("UserDao selectUser error");
+			System.out.println("UserDao insertUser error");
 		}finally{
 			try {
 				if(rs!=null){rs.close();}

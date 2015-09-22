@@ -27,7 +27,7 @@ public class FreeDao{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			if(con==null){
-				String url = "jdbc:mysql://203.236.209.87:3306/board_db";
+				String url = "jdbc:mysql://203.236.209.87:3306/movie_db";
 				con = DriverManager.getConnection(url,"root","hanbit");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -51,7 +51,7 @@ public class FreeDao{
 		int result=0;
 		try {
 			String sql="insert into FREE_ARTICLE_TB( USER_ID, ARTICLE_TITLE, CONTENT, READ_COUNT, YMD)"
-					+"(?,?,?,?,?)";
+					+"values(?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, freeArticle.getUserId());
 			pstmt.setString(2, freeArticle.getArticleTitle());
