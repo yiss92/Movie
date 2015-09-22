@@ -1,6 +1,5 @@
 package vo;
 
-import java.util.Date;
 
 public class MovieArticle {
 	private String movieTitle;
