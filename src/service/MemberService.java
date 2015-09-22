@@ -173,6 +173,10 @@ public class MemberService {
 		String member_pw = request.getParameter("member_pw");
 		// int member_id = Integer.parseInt(idStr);
 		// //System.out.println(articleId);
+		
+		System.out.println(member_id);
+		System.out.println(member_pw);
+		
 		UserDao dao = UserDao.getInstance();
 		dao.startCon();
 
@@ -182,8 +186,11 @@ public class MemberService {
 			dao.closeCon();
 			throw new Exception("존재하지 않는 ID 수정 불가!");
 		}
-
-		if (member_id == result.getUserId() && member_pw == result.getPw()) {
+//        System.out.println(member_id);
+//        System.out.println(result.getUserId());
+//        System.out.println(member_pw);
+//        System.err.println(result.getPw());
+		if (member_id.equals(result.getUserId()) && member_pw.equals(result.getPw())) {
 			dao.selectUser(member_id); // articleId db에 있는 거 삭제시킴.
 			dao.closeCon();
 		} else {
