@@ -43,13 +43,13 @@ public class UserDao {
 			}
 		}
 	}
-	
+
 	public int insertUser(User user){
 		PreparedStatement pstmt = null;
 		int result=0;
 		try {
 			String sql="insert into USER_TB( USER_CD, USER_ID, PW, NICKNAME, EMAIL, YMD)"
-					+"(?,?,?,?,?,?)";
+					+"values(?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "user");
 			pstmt.setString(2, user.getUserId());
