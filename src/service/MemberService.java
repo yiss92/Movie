@@ -164,4 +164,35 @@ public class MemberService {
 		// }
 		//
 	}
+	
+	public User  memberSelect(HttpServletRequest request) throws Exception {
+		//User user = new User();
+		
+		String member_id = request.getParameter("member_id");
+		String member_pw = request.getParameter("member_pw");
+		// int member_id = Integer.parseInt(idStr);
+		// //System.out.println(articleId);
+		UserDao dao = UserDao.getInstance();
+		dao.startCon();
+
+		User result = dao.selectUser(member_id);
+		
+		if (result == null) {
+			dao.closeCon();
+			throw new Exception("존재하지 않는 ID 수정 불가!");
+		}
+
+		if (member_id == result.getUserId() && member_pw == result.getPw()) {
+			dao.selectUser(member_id); // articleId db에 있는 거 삭제시킴.
+			dao.closeCon();;
+		} else {
+			// 비밀번호가 틀린 경우 예외객체 던짐.
+			dao.closeCon();
+			throw new Exception("ID 없음!");
+		}
+		
+		
+		return result;
+		
+	}
 }
