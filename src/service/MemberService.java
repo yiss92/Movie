@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import repository.UserDao;
 import vo.User;
@@ -65,10 +66,12 @@ public class MemberService {
 		// String idStr = request.getParameter("member_id");
 		// int member_id = Integer.parseInt(idStr);
 		// String password = request.getParameter("password");
-		String member_id = request.getParameter("member_id");
+		HttpSession session = request.getSession();
+		String temp = String.valueOf(session.getAttribute("user"));
+		String member_id = temp;
 		String member_nic = request.getParameter("member_nicname");
 		String memeber_email = request.getParameter("email");
-
+		
 		User user = new User();
 		user.setUserId(member_id);
 		user.setNickname(member_nic);
@@ -81,8 +84,14 @@ public class MemberService {
 		if (original == null) {
 			Dao.closeCon();
 		}
-
-		Dao.updateUser(user);
+		
+		
+//		if(temp.equals(original.getUserId())){
+//			Dao.updateUser(user);
+//		}else{			
+//			Dao.closeCon();
+//			throw new Exception("id가 다릅니다.!");
+//		}
 
 		// if (user.getPw() != null) {
 		// userDao.updateUser(user); // 비밀번호 검사 통과하면 수정사항 db에 저장함.

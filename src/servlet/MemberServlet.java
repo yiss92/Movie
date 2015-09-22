@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import repository.UserDao;
 import service.MemberService;
@@ -43,6 +44,8 @@ public class MemberServlet extends HttpServlet {
 		     } else if (type.equals("login")) {
                  User result= service.memberSelect(request);
                  request.setAttribute("result", result);
+                 HttpSession session = request.getSession();
+                 session.setAttribute("user", result.getUserId());
                   viewpath = "login.html";
 
 			} else if (type.equals("joinForm")) {
