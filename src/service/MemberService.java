@@ -33,6 +33,7 @@ public class MemberService {
 		String member_nic = request.getParameter("nickname");
 		String member_email = request.getParameter("email");
 
+		//
 		User user = new User();
 		user.setUserId(member_id);
 		user.setPw(member_pw);
