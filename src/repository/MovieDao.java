@@ -80,8 +80,7 @@ public class MovieDao{
 		ResultSet rs=null;
 		MovieArticle result=new MovieArticle();
 		try {
-			String sql="select * from MOVIE_TB where MOVIE_TITLE=?"
-					+"(?)";
+			String sql="select * from MOVIE_TB where MOVIE_TITLE=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, movieTitle);
 
@@ -182,8 +181,7 @@ public class MovieDao{
 		ResultSet rs=null;
 		MovieReview result=new MovieReview();
 		try {
-			String sql="select * from MOVIE_REVIEW_TB where ARTICLE_NO=?"
-					+"(?)";
+			String sql="select * from MOVIE_REVIEW_TB where ARTICLE_NO=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, articleNo);
 

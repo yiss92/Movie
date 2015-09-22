@@ -74,8 +74,7 @@ public class FreeDao{
 		ResultSet rs=null;
 		FreeArticle result=new FreeArticle();
 		try {
-			String sql="select * from FREE_ARTICLE_TB where ARTICLE_NO=?"
-					+"(?)";
+			String sql="select * from FREE_ARTICLE_TB where ARTICLE_NO=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, articleNo);
 
