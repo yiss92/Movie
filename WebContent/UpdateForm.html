@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<form action ="movie" method= "post">
+          <table border ="1">
+               <tr >
+                    <td >id: </td >
+                    <td ><input type ="text" name="member_id" size= "10"><br ></td >
+               </tr >
+               
+               <tr >
+                    <td >변경할 닉네임: </td >
+                    <td ><input type ="text" name="member_nicname" size= "10"><br ></td >
+               </tr >
+               <tr >
+                    <td >변경할 이메일:</td >
+                    <td ><input type ="email" name="email" size= "10"><br ></td >
+               </tr >
+               <tr >
+                    <td colspan ="2"><input type= "submit" value= "회원수정"></td >
+                    <input type="hidden" name="type" value="update" >
+               </tr >
+          </table >
+     </form >
+</body>
+</html>

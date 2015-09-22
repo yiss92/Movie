@@ -41,8 +41,8 @@ public class MemberServlet extends HttpServlet {
 				viewpath = "loginForm.html";
 				
 		     } else if (type.equals("login")) {
-                 User result= service.memberSelect( request);
-                  request.setAttribute( "result", result);
+                 User result= service.memberSelect(request);
+                 request.setAttribute("result", result);
                   viewpath = "login.html";
 
 			} else if (type.equals("joinForm")) {
@@ -53,14 +53,22 @@ public class MemberServlet extends HttpServlet {
 				request.setAttribute("result", result);
 				viewpath = "join.jsp";
 
-			} else if (type.equals("MyPage")) {
-				viewpath = "MyPage.html";
+			} else if (type.equals("myPage")) {
+				viewpath = "myPage.html";	
+				
+			} else if (type.equals("updateForm")) {
+				viewpath = "UpdateForm.html";
+				
+			} else if (type.equals("update")) {
+				service.updateMember(request);
+				viewpath = "Update.html";
 
-			} else if (type.equals("MyPageUpdate")) {
-				viewpath = "MyPageUpdate.html";
-
-			} else if (type.equals("MyPageDelete")) {
-				viewpath = "MyPageDelete.html";
+			} else if (type.equals("deleteForm")) {
+				viewpath = "DeleteForm.html";	
+				
+			} else if (type.equals("delete")) {
+				service.deleteMember(request);
+				viewpath = "Delete.html";
 
 			}
 

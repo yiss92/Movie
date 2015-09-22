@@ -106,6 +106,7 @@ public class UserDao {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, user.getNickname());
 			pstmt.setString(2, user.getEmail());
+			pstmt.setString(3, user.getUserId());
 			
 			result=pstmt.executeUpdate();
 		} catch (SQLException e) {
