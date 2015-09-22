@@ -174,8 +174,8 @@ public class MemberService {
 		// int member_id = Integer.parseInt(idStr);
 		// //System.out.println(articleId);
 		
-		System.out.println(member_id);
-		System.out.println(member_pw);
+		//System.out.println(member_id);
+		//System.out.println(member_pw);
 		
 		UserDao dao = UserDao.getInstance();
 		dao.startCon();
