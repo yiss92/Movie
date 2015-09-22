@@ -49,7 +49,8 @@ public class MemberService {
 //		
 //		int result = dao.insertMember(member);
 //		dao.closeConnection();
-
+//
+//
 		return result;	
 	}
 	
