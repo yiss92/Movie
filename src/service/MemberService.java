@@ -162,5 +162,6 @@ public class MemberService {
 		// dao.closeConnection();
 		// throw new Exception("articleId ¾øÀ½!");
 		// }
+		//
 	}
 }
