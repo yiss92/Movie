@@ -40,29 +40,10 @@ public class MemberServlet extends HttpServlet {
 				// viewpath="FrontPage1.html";
 				viewpath = "loginForm.html";
 				
-			} else if (type.equals("login")) {
-				String member_id = request.getParameter("member_id");
-
-				
-				
-				String member_pw = request.getParameter("member_pw");
-				
-				User user = new User();
-				
-				user.setUserCd(member_id);
-				user.setPw(member_pw);
-				
-				repository.UserDao Dao = UserDao.getInstance();
-				Dao.startCon();
-				
-				User ori = Dao.selectUser(user.getUserId());
-				
-				if((user.getUserId() != null && user.getUserId().equals(ori.getUserId()))
-					&&(user.getPw() != null && user.getPw().equals(ori.getPw()))){
-						viewpath = "login.html";
-					}else{
-						viewpath = "loginError.html";
-					}
+		     } else if (type.equals("login")) {
+                 User result= service.memberSelect( request);
+                  request.setAttribute( "result", result);
+                  viewpath = "login.html";
 
 			} else if (type.equals("joinForm")) {
 				viewpath = "joinForm.html";
