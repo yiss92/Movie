@@ -48,15 +48,14 @@ public class UserDao {
 		PreparedStatement pstmt = null;
 		int result=0;
 		try {
-			String sql="insert into USER_TB( USER_CD, USER_ID, PW, NICKNAME, EMAIL, YMD)"
-					+"values(?,?,?,?,?,?)";
+			String sql="insert into user_tb(USER_ID, PW, NICKNAME, EMAIL, YMD)"
+					+"values(?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, "user");
-			pstmt.setString(2, user.getUserId());
-			pstmt.setString(3, user.getPw());
-			pstmt.setString(4, user.getNickname());
-			pstmt.setString(5, user.getEmail());
-			pstmt.setTimestamp(6,new Timestamp(user.getYmd().getTime()));
+			pstmt.setString(1, user.getUserId());
+			pstmt.setString(2, user.getPw());
+			pstmt.setString(3, user.getNickname());
+			pstmt.setString(4, user.getEmail());
+			pstmt.setTimestamp(5,new Timestamp(user.getYmd().getTime()));
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
