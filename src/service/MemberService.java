@@ -136,7 +136,7 @@ public class MemberService {
 
 		if (member_id == original.getUserId()) {
 			dao.deleteUser(member_id); // articleId db에 있는 거 삭제시킴.
-			dao.closeCon();;
+			dao.closeCon();
 		} else {
 			// 비밀번호가 틀린 경우 예외객체 던짐.
 			dao.closeCon();
@@ -185,7 +185,7 @@ public class MemberService {
 
 		if (member_id == result.getUserId() && member_pw == result.getPw()) {
 			dao.selectUser(member_id); // articleId db에 있는 거 삭제시킴.
-			dao.closeCon();;
+			dao.closeCon();
 		} else {
 			// 비밀번호가 틀린 경우 예외객체 던짐.
 			dao.closeCon();
