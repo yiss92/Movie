@@ -1,7 +1,10 @@
 package vo;
 
+import java.util.Date;
+
 public class MovieArticle {
 	private String movieTitle;
+	private String movieImage;
 	private String genre1;
 	private String genre2;
 	private String director;
@@ -9,14 +12,15 @@ public class MovieArticle {
 	private String production;
 	private String story;
 	private int readCount;
-	private String ymd;
+	private int ymd;
+	private int openCheck;
 
 	public MovieArticle(){
 	}
-
-	public MovieArticle(String movieTitle, String genre1, String genre2, String director, String star,
-			String production, String story, int readCount, String ymd) {
+	public MovieArticle(String movieTitle, String movieImage, String genre1, String genre2, String director,
+			String star, String production, String story, int readCount, int ymd, int openCheck) {
 		this.movieTitle = movieTitle;
+		this.movieImage = movieImage;
 		this.genre1 = genre1;
 		this.genre2 = genre2;
 		this.director = director;
@@ -25,13 +29,20 @@ public class MovieArticle {
 		this.story = story;
 		this.readCount = readCount;
 		this.ymd = ymd;
+		this.openCheck = openCheck;
 	}
-
+	
 	public String getMovieTitle() {
 		return movieTitle;
 	}
 	public void setMovieTitle(String movieTitle) {
 		this.movieTitle = movieTitle;
+	}
+	public String getMovieImage() {
+		return movieImage;
+	}
+	public void setMovieImage(String movieImage) {
+		this.movieImage = movieImage;
 	}
 	public String getGenre1() {
 		return genre1;
@@ -75,10 +86,16 @@ public class MovieArticle {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-	public String getYmd() {
+	public int getYmd() {
 		return ymd;
 	}
-	public void setYmd(String ymd) {
+	public void setYmd(int ymd) {
 		this.ymd = ymd;
+	}
+	public int getOpenCheck() {
+		return openCheck;
+	}
+	public void setOpenCheck(int openCheck) {
+		this.openCheck = openCheck;
 	}
 }

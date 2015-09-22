@@ -1,19 +1,21 @@
 package vo;
 
+import java.util.Date;
+
 public class MovieReview {
-	private int aticleNo;
+	private int articleNo;
 	private String userId;
 	private String movieTitle;
 	private String articleTitle;
 	private String review;
 	private int readCount;
-	private String ymd;
+	private Date ymd;
 	
 	public MovieReview(){
 	}
-	public MovieReview(int aticleNo, String userId, String movieTitle, String articleTitle, String review,
-			int readCount, String ymd) {
-		this.aticleNo = aticleNo;
+	public MovieReview(int articleNo, String userId, String movieTitle, String articleTitle, String review,
+			int readCount, Date ymd) {
+		this.articleNo = articleNo;
 		this.userId = userId;
 		this.movieTitle = movieTitle;
 		this.articleTitle = articleTitle;
@@ -22,11 +24,11 @@ public class MovieReview {
 		this.ymd = ymd;
 	}
 	
-	public int getAticleNo() {
-		return aticleNo;
+	public int getArticleNo() {
+		return articleNo;
 	}
-	public void setAticleNo(int aticleNo) {
-		this.aticleNo = aticleNo;
+	public void setArticleNo(int articleNo) {
+		this.articleNo = articleNo;
 	}
 	public String getUserId() {
 		return userId;
@@ -58,10 +60,10 @@ public class MovieReview {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-	public String getYmd() {
+	public Date getYmd() {
 		return ymd;
 	}
-	public void setYmd(String ymd) {
+	public void setYmd(Date ymd) {
 		this.ymd = ymd;
 	}
 }
