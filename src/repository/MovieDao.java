@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import vo.MovieArticle;
+import vo.MovieReview;
 
 public class MovieDao{
 	private Connection con;
@@ -44,5 +45,200 @@ public class MovieDao{
 		}
 	}
 	
-	//
+	
+	public int insertMovie(MovieArticle movieArticle){
+		PreparedStatement pstmt = null;
+		int result=0;
+		try {
+			String sql="insert into MOVIE_TB( MOVIE_TITLE, GENRE_1, GENRE_2, DIRECTOR, STAR, PRODUCTION, STORY, READ_COUNT, YMD)"
+					+"(?,?,?,?,?,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, movieArticle.getMovieTitle());
+			pstmt.setString(2, movieArticle.getGenre1());
+			pstmt.setString(3, movieArticle.getGenre2());
+			pstmt.setString(4, movieArticle.getDirector());
+			pstmt.setString(5, movieArticle.getStar());
+			pstmt.setString(6, movieArticle.getProduction());
+			pstmt.setString(7, movieArticle.getStory());
+			pstmt.setInt(8, movieArticle.getReadCount());
+			pstmt.setTimestamp(9,new Timestamp(movieArticle.getYmd().getTime()));
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao insertMovie error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
+		}
+		return result;
+	}
+	
+	public MovieArticle selectMovie(String movieTitle){
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		MovieArticle result=new MovieArticle();
+		try {
+			String sql="select * from MOVIE_TB where MOVIE_TITLE=?"
+					+"(?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, movieTitle);
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result.setMovieTitle(rs.getString(1));
+				result.setGenre1(rs.getString(2));
+				result.setGenre2(rs.getString(3));
+				result.setDirector(rs.getString(4));
+				result.setStar(rs.getString(5));
+				result.setProduction(rs.getString(6));
+				result.setStory(rs.getString(7));
+				result.setReadCount(rs.getInt(8));
+				result.setYmd(rs.getTimestamp(9));
+			}
+		} catch (SQLException e) {
+			System.out.println("MovieDao selectMovie error");
+		}finally{
+			try {
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+			} catch (SQLException e) {}
+		}
+		return result;
+	}
+	
+	public int updateMovie(MovieArticle movieArticle){
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			String sql="update MOVIE_TB set GENRE_1=?, GENRE_2=?, DIRECTOR=?, STAR=?, PRODUCTION=?, STORY=? where MOVIE_TITLE=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, movieArticle.getGenre1());
+			pstmt.setString(2, movieArticle.getGenre2());
+			pstmt.setString(3, movieArticle.getDirector());
+			pstmt.setString(4, movieArticle.getStar());
+			pstmt.setString(5, movieArticle.getProduction());
+			pstmt.setString(6, movieArticle.getStory());
+			pstmt.setString(7, movieArticle.getMovieTitle());
+			
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao updateMovie error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
+		}
+		return result;
+	}
+	
+	public int deleteMovie(String movieTitle){
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			String sql="delete from MOVIE_TB where MOVIE_TITLE=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, movieTitle);
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao deleteMovie error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
+		}
+		return result;
+	}
+	
+	public int insertReview(MovieReview movieReview){
+		PreparedStatement pstmt = null;
+		int result=0;
+		try {
+			String sql="insert into MOVIE_REVIEW_TB( USER_ID, MOVIE_TITLE, ARTICLE_TITLE, REVIEW, YMD)"
+					+"(?,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, movieReview.getUserId());
+			pstmt.setString(2, movieReview.getMovieTitle());
+			pstmt.setString(3, movieReview.getArticleTitle());
+			pstmt.setString(4, movieReview.getReview());
+			pstmt.setTimestamp(5,new Timestamp(movieReview.getYmd().getTime()));
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao insertReview error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
+		}
+		return result;
+	}
+	
+	public MovieReview selectReview(int articleNo){
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		MovieReview result=new MovieReview();
+		try {
+			String sql="select * from MOVIE_REVIEW_TB where ARTICLE_NO=?"
+					+"(?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, articleNo);
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result.setArticleNo(rs.getInt(1));
+				result.setUserId(rs.getString(2));
+				result.setMovieTitle(rs.getString(3));
+				result.setArticleTitle(rs.getString(4));
+				result.setReview(rs.getString(5));
+				result.setReadCount(rs.getInt(6));
+				result.setYmd(rs.getTimestamp(7));
+			}
+		} catch (SQLException e) {
+			System.out.println("MovieDao selectReview error");
+		}finally{
+			try {
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+			} catch (SQLException e) {}
+		}
+		return result;
+	}
+	
+	public int updateReview(MovieReview movieReview){
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			String sql="update MOVIE_REVIEW_TB set ARTICLE_TITLE=?, CONTENT=? where ARTICLE_NO=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, movieReview.getArticleTitle());
+			pstmt.setString(2, movieReview.getReview());
+			
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao updateReview error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
+		}
+		return result;
+	}
+	
+	public int deleteReview(int articleNO){
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			String sql="delete from MOVIE_REVIEW_TB where ARTICLE_ID=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, articleNO);
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao deleteReview error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
+		}
+		return result;
+	}
+	
 }
