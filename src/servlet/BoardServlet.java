@@ -61,13 +61,9 @@ public class BoardServlet extends HttpServlet {
 				
 			}else if(type.equals("update_form")){
 				//글 수정 폼
-				System.out.println("test");
 				FreeArticle ori= service.readWithOutReadCount(request);
-				System.out.println("test1");
 				request.setAttribute("ori", ori);
-				System.out.println("test2");
 				viewpath = "update_form.jsp";
-				System.out.println("test3");
 				
 			}else if(type.equals("update")){
 				//글 수정
