@@ -50,7 +50,7 @@ public class FreeDao{
 		PreparedStatement pstmt = null;
 		int result=0;
 		try {
-			String sql="insert into FREE_ARTICLE_TB( USER_ID, ARTICLE_TITLE, CONTENT,, YMD)"
+			String sql="insert into FREE_ARTICLE_TB( USER_ID, ARTICLE_TITLE, CONTENT, YMD)"
 					+"values(?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, freeArticle.getUserId());
