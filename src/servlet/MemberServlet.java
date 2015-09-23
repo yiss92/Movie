@@ -86,7 +86,7 @@ public class MemberServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("exception", e);
-			viewpath = "error.html";
+			viewpath = "member_error.html";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewpath);

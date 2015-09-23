@@ -49,6 +49,8 @@ public class BoardService {
 		article.setContent(content);
 		article.setYmd(new Date());
 
+		System.out.println(temp + title + content);
+		System.out.println(new Date());
 		FreeDao dao = FreeDao.getInstance();
 		dao.startCon();
 
@@ -61,7 +63,7 @@ public class BoardService {
 	//조회 후 count 값 올라 갈때
 	public FreeArticle read(HttpServletRequest request) {
 
-		String idStr = request.getParameter("member_id");
+		String idStr = request.getParameter("articleNum");
 		int id = 0;
 		if (idStr != null && idStr.length() > 0)
 			id = Integer.parseInt(idStr);
