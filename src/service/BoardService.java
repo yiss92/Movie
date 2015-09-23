@@ -148,7 +148,7 @@ public class BoardService {
 	//조회후 수정할때 count 값 올라가지 않을때.
 	public FreeArticle readWithOutReadCount(HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
-		String idStr = request.getParameter("articleId");
+		String idStr = request.getParameter("articleNum");
 		int articleId = Integer.parseInt(idStr);
 
 		FreeDao dao = FreeDao.getInstance();
