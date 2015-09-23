@@ -44,7 +44,7 @@ public class MemberServlet extends HttpServlet {
 		     } else if (type.equals("login")) {
                  User result= service.memberSelect(request);
                  request.setAttribute("result", result);
-                 HttpSession session = request.getSession();
+                 HttpSession session = request.getSession(); ///
                  session.setAttribute("user", result.getUserId());
                   viewpath = "login.html";
 

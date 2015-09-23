@@ -71,7 +71,7 @@ public class MemberService {
 		String member_id = temp;
 		String member_nic = request.getParameter("member_nicname");
 		String memeber_email = request.getParameter("email");
-		
+		///
 		User user = new User();
 		user.setUserId(member_id);
 		user.setNickname(member_nic);
