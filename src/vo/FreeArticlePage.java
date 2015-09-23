@@ -15,6 +15,13 @@ public class FreeArticlePage {
 	
 	public FreeArticlePage(){
 	}
+	public FreeArticlePage(List<FreeArticle> freeList, int nowPage, int totalPage, int startArticleNo, int endArticleNo ){
+		this.freeList = freeList;
+		this.nowPage = nowPage;
+		this.totalPage = totalPage;
+		this.startArticleNo = startArticleNo;
+		this.endArticleNo = endArticleNo;
+	}
 	public FreeArticlePage(List<FreeArticle> freeList, int nowPage, int perPage, int totalPage, int startArticleNo, int endArticleNo, int perList, int startListNo, int endListNo) {
 		this.freeList = freeList;
 		this.nowPage = nowPage;

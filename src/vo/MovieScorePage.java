@@ -3,7 +3,7 @@ package vo;
 import java.util.List;
 
 public class MovieScorePage {
-	private List<MovieScore> movieList;
+	private List<MovieScore> scoreList;
 	private int avgScore;
 	private int nowPage;
 	private int perPage;
@@ -16,8 +16,15 @@ public class MovieScorePage {
 	
 	public MovieScorePage(){
 	}
-	public MovieScorePage(List<MovieScore> movieList, int avgScore, int nowPage, int perPage, int totalPage, int startArticleNo, int endArticleNo, int perList, int startListNo, int endListNo) {
-		this.movieList = movieList;
+	public MovieScorePage(List<MovieScore> scoreList, int nowPage, int totalPage, int startArticleNo, int endArticleNo ){
+		this.scoreList = scoreList;
+		this.nowPage = nowPage;
+		this.totalPage = totalPage;
+		this.startArticleNo = startArticleNo;
+		this.endArticleNo = endArticleNo;
+	}
+	public MovieScorePage(List<MovieScore> scoreList, int avgScore, int nowPage, int perPage, int totalPage, int startArticleNo, int endArticleNo, int perList, int startListNo, int endListNo) {
+		this.scoreList = scoreList;
 		this.avgScore = avgScore;
 		this.nowPage = nowPage;
 		this.perPage = perPage;
@@ -29,11 +36,11 @@ public class MovieScorePage {
 		this.endListNo = endListNo;
 	}
 	
-	public List<MovieScore> getMovieList() {
-		return movieList;
+	public List<MovieScore> getScoreListt() {
+		return scoreList;
 	}
-	public void setMovieList(List<MovieScore> movieList) {
-		this.movieList = movieList;
+	public void setScoreList(List<MovieScore> scoreList) {
+		this.scoreList = scoreList;
 	}
 	public int getAvgScore() {
 		return avgScore;
