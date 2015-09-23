@@ -69,6 +69,7 @@ public class FreeDao{
 		}
 		return result;
 	}
+	
 	public List<FreeArticle> selectFreeList(int startRow, int count){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -91,7 +92,6 @@ public class FreeDao{
 				article.setYmd(rs.getTimestamp(6));
 				result.add(article);
 			}
-			
 		}catch(SQLException ex){
 			System.out.println("FreeDao selectFreeList error");
 			ex.printStackTrace();
@@ -103,6 +103,7 @@ public class FreeDao{
 		}
 		return result;
 	}
+	
 	public FreeArticle selectFree(int articleNo){
 		PreparedStatement pstmt = null;
 		ResultSet rs=null;
@@ -128,6 +129,25 @@ public class FreeDao{
 				if(rs!=null){rs.close();}
 				if(pstmt!=null){pstmt.close();}
 			} catch (SQLException e) {}
+		}
+		return result;
+	}
+	
+	public int updateReadCountFree(FreeArticle freeArticle){
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			String sql="update FREE_ARTICLE_TB set READ_COUNT=? where ARTICLE_NO=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, freeArticle.getReadCount()+1);
+			pstmt.setInt(2, freeArticle.getArticleNo());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("FreeDao updateReadCountFree error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
 		}
 		return result;
 	}
