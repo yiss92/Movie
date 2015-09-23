@@ -34,7 +34,7 @@ public class BoardService {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		// String count = request.getParameter("count");
-
+        //
 		// pstmt.setString(1, freeArticle.getUserId());
 		// pstmt.setString(2, freeArticle.getArticleTitle());
 		// pstmt.setString(3, freeArticle.getContent());
