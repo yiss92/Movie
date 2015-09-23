@@ -137,13 +137,16 @@ public class MemberService {
 		UserDao dao = UserDao.getInstance();
 		dao.startCon();
 
-		User original = dao.selectUser(member_id);
-		if (original == null) {
-			dao.closeCon();
-			throw new Exception("존재하지 않는 ID 수정 불가!");
-		}
+//		User original = dao.selectUser(member_id);
+//		if (original == null) {
+//			dao.closeCon();
+//			throw new Exception("존재하지 않는 ID 수정 불가!");
+//		}
+		
+		HttpSession session = request.getSession();
+		String temp = String.valueOf(session.getAttribute("user"));
 
-		if (member_id.equals(original.getUserId())) {
+		if (member_id.equals(temp)) {  //session id와 비교해서 삭제시킴
 			dao.deleteUser(member_id); // articleId db에 있는 거 삭제시킴.
 			dao.closeCon();
 		} else {
