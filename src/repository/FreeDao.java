@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import vo.FreeArticle;
 import vo.User;
@@ -67,7 +69,40 @@ public class FreeDao{
 		}
 		return result;
 	}
-	
+	public List<FreeArticle> selectFreeList(int startRow, int count){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<FreeArticle> result = new ArrayList<>();
+		try{
+			String sql = 
+				"select * from FREE_ARTICLE_TB order by ARTICLE_NO desc limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, count);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				FreeArticle article = new FreeArticle();
+				article.setArticleNo(rs.getInt(1));
+				article.setUserId(rs.getString(2));
+				article.setArticleTitle(rs.getString(3));
+				article.setContent(rs.getString(4));
+				article.setReadCount(rs.getInt(5));
+				article.setYmd(rs.getTimestamp(6));
+				result.add(article);
+			}
+			
+		}catch(SQLException ex){
+			System.out.println("FreeDao selectFreeList error");
+			ex.printStackTrace();
+		}finally{
+			try{
+				if(rs != null){rs.close();} 
+				if(pstmt != null){pstmt.close();} 
+			}catch (SQLException e){e.printStackTrace();}
+		}
+		return result;
+	}
 	public FreeArticle selectFree(int articleNo){
 		PreparedStatement pstmt = null;
 		ResultSet rs=null;
