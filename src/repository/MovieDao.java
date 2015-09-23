@@ -107,6 +107,7 @@ public class MovieDao{
 		}
 		return result;
 	}
+
 	
 	public int updateMovie(MovieArticle movieArticle){
 		PreparedStatement pstmt=null;
@@ -151,6 +152,27 @@ public class MovieDao{
 		}
 		return result;
 	}
+	public int updateOpenChangeMovie(String movieTitle, int openCheck){
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			String sql="update MOVIE_TB set OPEN_CHECK=? where MOVIE_TITLE=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, 1-openCheck);
+			pstmt.setString(2, movieTitle);
+			
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao openChangeMovie error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
+		}
+		return result;
+	}
+	
+	
 	
 	public int insertReview(MovieReview movieReview){
 		PreparedStatement pstmt = null;
