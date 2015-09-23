@@ -33,7 +33,6 @@ public class MemberServlet extends HttpServlet {
 		String type = request.getParameter("type");
 		String viewpath = "";
 
-		System.out.println("test:"+type);
 		MemberService service = MemberService.getInstance();
 		HttpSession session = request.getSession(); ///
 
