@@ -34,7 +34,8 @@ public class MemberServlet extends HttpServlet {
 		String viewpath = "";
 
 		MemberService service = MemberService.getInstance();
-
+		HttpSession session = request.getSession(); ///
+			
 		try {
 
 			if (type == null || type.equals("loginForm")) {
@@ -44,8 +45,8 @@ public class MemberServlet extends HttpServlet {
 		     } else if (type.equals("login")) {
                  User result= service.memberSelect(request);
                  request.setAttribute("result", result);
-                 HttpSession session = request.getSession(); ///
-                 session.setAttribute("user", result.getUserId());
+                 
+                 session.setAttribute("user", result.getUserId());///
                   viewpath = "login.html";
 
 			} else if (type.equals("joinForm")) {
@@ -71,8 +72,13 @@ public class MemberServlet extends HttpServlet {
 				
 			} else if (type.equals("delete")) {
 				service.deleteMember(request);
+				session.invalidate();//
 				viewpath = "Delete.html";
-
+			
+			} else if (type.equals("logout")) {
+				session.invalidate();//
+				viewpath = "logout.html";
+				
 			}
 
 		} catch (Exception e) {
