@@ -23,9 +23,9 @@
 	<script type="text/javascript" src="js/touchTouch.jquery.js"></script>
 	<script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}	</script>
 	<style type="text/css">
- 		.LogInForm{ 
+ 		#inform{ 
   		position: relative; 
-  		right: -860px; 
+  		right: -1300px; 
 /*  		top: -800px; */ 
 //
   	}  
@@ -71,28 +71,15 @@
     <div class="spinner"></div> 
 <!--============================== header =================================-->
 <header>
-<form action="movie" class="LogInForm" method="post">
- 	<table>
- 		<tr>
- 			<td>ID</td>
- 			<td><input type = "text" name = "member_id" size = "10"></td>
- 			<td>PW</td>
- 			<td><input type = "password" name = "member_pw" size = "10"></td>
- 			<td><input type = "submit" value = "로그인">
- 			 <input type="hidden" name="type" value="login" ></td>
- 			<td><button id="joinBtn">회원가입</button></td>
-<!--  			<td><input type ="submit" value ="회원가입"> -->
-<!--  			<input type="hidden" name="type" value="login" ></td> -->
- 		</tr>	
- 	</table>
- </form>
-<!-- <a href ="movie?type=joinForm"><button>회원가입</button></a > -->
+ 		
+<a href ="movie?type=myPage"><button id="inform">회원정보</button></a >
+<a href ="movie?type=logout"><button id="inform">로그아웃</button></a >
       <div class="container clearfix">
     <div class="row">
           <div class="span12">
         <div class="navbar navbar_">
               <div class="container">
-            <h1 class="brand brand_"><a href="movie?type=loginForm"><img alt="" src="img/MainTopic.JPG"> </a></h1>
+            <h1 class="brand brand_"><a href="movie?type=login-1"><img alt="" src="img/MainTopic.JPG"> </a></h1>
             <a class="btn btn-navbar btn-navbar_" data-toggle="collapse" data-target=".nav-collapse_">Menu <span class="icon-bar"></span> </a>
             <div class="nav-collapse nav-collapse_  collapse">
                   <ul class="nav sf-menu">
