@@ -50,14 +50,13 @@ public class FreeDao{
 		PreparedStatement pstmt = null;
 		int result=0;
 		try {
-			String sql="insert into FREE_ARTICLE_TB( USER_ID, ARTICLE_TITLE, CONTENT, READ_COUNT, YMD)"
-					+"values(?,?,?,?,?)";
+			String sql="insert into FREE_ARTICLE_TB( USER_ID, ARTICLE_TITLE, CONTENT,, YMD)"
+					+"values(?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, freeArticle.getUserId());
 			pstmt.setString(2, freeArticle.getArticleTitle());
 			pstmt.setString(3, freeArticle.getContent());
-			pstmt.setInt(4, freeArticle.getReadCount()+1);
-			pstmt.setTimestamp(5,new Timestamp(freeArticle.getYmd().getTime()));
+			pstmt.setTimestamp(4,new Timestamp(freeArticle.getYmd().getTime()));
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("FreeDao insertFree error");
