@@ -63,15 +63,17 @@
     <div class="spinner"></div> 
 <!--============================== header =================================-->
 <header>
-<form action="" class="LogInForm">
+<form action="movie" class="LogInForm" method="post">
  	<table border="1">
  		<tr>
  			<td>ID</td>
- 			<td><input type = "text" name = "id" size = "10"></td>
+ 			<td><input type = "text" name = "member_id" size = "10"></td>
  			<td>PW</td>
- 			<td><input type = "password" name = "pw" size = "10"></td>
- 			<td><input type = "submit" value = "로그인"></td>
- 			<td><input type = "submit" value = "회원가입"></td>
+ 			<td><input type = "password" name = "member_pw" size = "10"></td>
+ 			<td><input type = "submit" value = "로그인">
+ 			 <input type="hidden" name="type" value="login" ></td>
+ 			<td><a href ="movie?type=joinForm"><button>회원가입</button></a >
+<!--  			<td><input type = "submit" value = "회원가입"></td> -->
  		</tr>	
  	</table>
  </form>

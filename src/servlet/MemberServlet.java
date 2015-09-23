@@ -39,8 +39,10 @@ public class MemberServlet extends HttpServlet {
 		try {
 
 			if (type == null || type.equals("loginForm")) {
-				// viewpath="FrontPage1.html";
-				viewpath = "loginForm.html";
+//			if(type == null){
+//				viewpath="FrontPage1.html";
+//			}else if(type.equals("loginForm")){
+				viewpath="FrontPage1.html";
 				
 		     } else if (type.equals("login")) {
                  User result= service.memberSelect(request);
