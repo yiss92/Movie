@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import repository.FreeDao;
 import vo.FreeArticle;
@@ -29,7 +30,7 @@ public class BoardService {
 		// String writerName = request.getParameter("writerName");
 		// String password = request.getParameter("password");
 		// String content = request.getParameter("content");
-		String id = request.getParameter("member_id");
+		//String id = request.getParameter("member_id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		// String count = request.getParameter("count");
@@ -39,8 +40,11 @@ public class BoardService {
 		// pstmt.setString(3, freeArticle.getContent());
 		// pstmt.setInt(4, freeArticle.getReadCount()+1);
 		// pstmt.setTimestamp(5,new Timestamp(freeArticle.getYmd().getTime()));
+		HttpSession session = request.getSession();
+		String temp = String.valueOf(session.getAttribute("user"));
+		
 		FreeArticle article = new FreeArticle();
-		article.setUserId(id);
+		article.setUserId(temp);
 		article.setArticleTitle(title);
 		article.setContent(content);
 		article.setYmd(new Date());
