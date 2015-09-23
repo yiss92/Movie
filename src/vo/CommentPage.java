@@ -15,6 +15,13 @@ public class CommentPage {
 	
 	public CommentPage(){
 	}
+	public CommentPage(List<Comment> commentList, int nowPage, int totalPage, int startArticleNo, int endArticleNo ){
+		this.commentList = commentList;
+		this.nowPage = nowPage;
+		this.totalPage = totalPage;
+		this.startArticleNo = startArticleNo;
+		this.endArticleNo = endArticleNo;
+	}
 	public CommentPage(List<Comment> commentList, int nowPage, int perPage, int totalPage, int startArticleNo, int endArticleNo, int perList, int startListNo, int endListNo) {
 		this.commentList = commentList;
 		this.nowPage = nowPage;

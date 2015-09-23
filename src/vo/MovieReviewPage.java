@@ -15,7 +15,13 @@ public class MovieReviewPage {
 	
 	public MovieReviewPage(){
 	}
-
+	public MovieReviewPage(List<MovieReview> movieList, int nowPage, int totalPage, int startArticleNo, int endArticleNo ){
+		this.movieList = movieList;
+		this.nowPage = nowPage;
+		this.totalPage = totalPage;
+		this.startArticleNo = startArticleNo;
+		this.endArticleNo = endArticleNo;
+	}
 	public MovieReviewPage(List<MovieReview> movieList, int nowPage, int perPage, int totalPage, int startArticleNo, int endArticleNo, int perList, int startListNo, int endListNo) {
 		this.movieList = movieList;
 		this.nowPage = nowPage;
