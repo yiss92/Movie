@@ -50,8 +50,8 @@ public class MovieDao{
 		PreparedStatement pstmt = null;
 		int result=0;
 		try {
-			String sql="insert into MOVIE_TB( MOVIE_TITLE, MOVIE_IMAGE, GENRE_1, GENRE_2, DIRECTOR, STAR, PRODUCTION, STORY, READ_COUNT, YMD, OPEN_CHECK)"
-					+"values(?,?,?,?,?,?,?,?,?,?,?)";
+			String sql="insert into MOVIE_TB( MOVIE_TITLE, MOVIE_IMAGE, GENRE_1, GENRE_2, DIRECTOR, STAR, PRODUCTION, STORY, YMD, OPEN_CHECK)"
+					+"values(?,?,?,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, movieArticle.getMovieTitle());
 			pstmt.setString(1, movieArticle.getMovieImage());
@@ -61,9 +61,8 @@ public class MovieDao{
 			pstmt.setString(6, movieArticle.getStar());
 			pstmt.setString(7, movieArticle.getProduction());
 			pstmt.setString(8, movieArticle.getStory());
-			pstmt.setInt(9, movieArticle.getReadCount());
-			pstmt.setInt(10,  movieArticle.getYmd());
-			pstmt.setInt(11,  movieArticle.getOpenCheck());
+			pstmt.setInt(9,  movieArticle.getYmd());
+			pstmt.setInt(10,  movieArticle.getOpenCheck());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("MovieDao insertMovie error");
@@ -108,6 +107,7 @@ public class MovieDao{
 		}
 		return result;
 	}
+
 	
 	public int updateMovie(MovieArticle movieArticle){
 		PreparedStatement pstmt=null;
@@ -152,6 +152,27 @@ public class MovieDao{
 		}
 		return result;
 	}
+	public int updateOpenChangeMovie(String movieTitle, int openCheck){
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			String sql="update MOVIE_TB set OPEN_CHECK=? where MOVIE_TITLE=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, 1-openCheck);
+			pstmt.setString(2, movieTitle);
+			
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao openChangeMovie error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
+		}
+		return result;
+	}
+	
+	
 	
 	public int insertReview(MovieReview movieReview){
 		PreparedStatement pstmt = null;
