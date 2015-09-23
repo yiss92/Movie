@@ -33,16 +33,25 @@
 	
 	<script>
 	
-		 jQuery(window).load(function() {	
-		 $x = $(window).width();		
-	if($x > 1024)
-	{			
-	jQuery("#content .row").preloader();    }	
-		 
-     jQuery('.magnifier').touchTouch();			
-    jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
-  		  }); 
-				
+		$(function() {
+			$x = $(window).width();
+			if ($x > 1024) {
+				jQuery("#content .row").preloader();
+			}
+
+			jQuery('.magnifier').touchTouch();
+			jQuery('.spinner').animate({
+				'opacity' : 0
+			}, 1000, 'easeOutCubic', function() {
+				jQuery(this).css('display', 'none')
+			});
+			
+			$('#joinBtn').click(function(){
+				alert("test");
+				document.location.href = "movie?type=joinForm";
+				return false;
+			})
+		});
 	</script>
 
 	<!--[if lt IE 8]>
@@ -72,12 +81,13 @@
  			<td><input type = "password" name = "member_pw" size = "10"></td>
  			<td><input type = "submit" value = "로그인">
  			 <input type="hidden" name="type" value="login" ></td>
- 			<td><a href ="movie?type=joinForm"><button>회원가입</button></a >
-<!--  			<td><input type = "submit" value = "회원가입"></td> -->
+ 			<td><button id="joinBtn">회원가입</button></td>
+<!--  			<td><input type ="submit" value ="회원가입"> -->
+<!--  			<input type="hidden" name="type" value="login" ></td> -->
  		</tr>	
  	</table>
  </form>
-
+<!-- <a href ="movie?type=joinForm"><button>회원가입</button></a > -->
       <div class="container clearfix">
     <div class="row">
           <div class="span12">
