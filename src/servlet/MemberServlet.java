@@ -29,27 +29,24 @@ public class MemberServlet extends HttpServlet {
 	private void process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
-		
+
 		String type = request.getParameter("type");
 		String viewpath = "";
 
 		MemberService service = MemberService.getInstance();
 		HttpSession session = request.getSession(); ///
-			
+
 		try {
 
 			if (type == null || type.equals("loginForm")) {
-//			if(type == null){
-//				viewpath="FrontPage1.html";
-//			}else if(type.equals("loginForm")){
-				viewpath="FrontPage1.html";
-				
-		     } else if (type.equals("login")) {
-                 User result= service.memberSelect(request);
-                 request.setAttribute("result", result);
-                 
-                 session.setAttribute("user", result.getUserId());///
-                  viewpath = "login.html";
+				viewpath = "FrontPage1.html";
+
+			} else if (type.equals("login")) {
+				User result = service.memberSelect(request);
+				request.setAttribute("result", result);
+
+				session.setAttribute("user", result.getUserId());///
+				viewpath = "login.html";
 
 			} else if (type.equals("joinForm")) {
 				viewpath = "joinForm.html";
@@ -60,30 +57,31 @@ public class MemberServlet extends HttpServlet {
 				viewpath = "join.jsp";
 
 			} else if (type.equals("myPage")) {
-				viewpath = "myPage.html";	
-				
+				viewpath = "myPage.html";
+
 			} else if (type.equals("updateForm")) {
 				viewpath = "UpdateForm.html";
-				
+
 			} else if (type.equals("update")) {
 				service.updateMember(request);
 				viewpath = "Update.html";
 
 			} else if (type.equals("deleteForm")) {
-				viewpath = "DeleteForm.html";	
-				
+				viewpath = "DeleteForm.html";
+
 			} else if (type.equals("delete")) {
 				service.deleteMember(request);
 				session.invalidate();//
 				viewpath = "Delete.html";
-			
+
 			} else if (type.equals("logout")) {
 				session.invalidate();//
 				viewpath = "logout.html";
-				
+
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			request.setAttribute("exception", e);
 			viewpath = "error.html";
 		}

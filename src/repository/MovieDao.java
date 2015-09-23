@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,29 @@ public class MovieDao{
 			if(pstmt!=null){
 				try {pstmt.close();} catch (SQLException e) {}
 			}
+		}
+		return result;
+	}
+	
+	public int selectMovieCount(int openCheck){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try{
+			String sql = "select count(*) from MOVIE_TB where=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, openCheck);
+			rs = pstmt.executeQuery(sql);
+			rs.next();
+			result = rs.getInt(1);			
+		}catch(SQLException ex){
+			System.out.println("MovieDao selectMovieCount error");
+			ex.printStackTrace();
+		}finally{
+			try{
+				if(rs != null){rs.close();}
+				if(pstmt != null){pstmt.close();} 
+			}catch (SQLException e){e.printStackTrace();}
 		}
 		return result;
 	}
@@ -255,6 +279,28 @@ public class MovieDao{
 			if(pstmt!=null){
 				try {pstmt.close();} catch (SQLException e) {}
 			}
+		}
+		return result;
+	}
+	
+	public int selectReviewCount(){
+		Statement stmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try{
+			String sql = "select count(*) from MOVIE_REVIEW_TB";
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			rs.next();
+			result = rs.getInt(1);			
+		}catch(SQLException ex){
+			System.out.println("MovieDao selectReviewCount error");
+			ex.printStackTrace();
+		}finally{
+			try{
+				if(rs != null){rs.close();}
+				if(stmt != null){stmt.close();} 
+			}catch (SQLException e){e.printStackTrace();}
 		}
 		return result;
 	}
