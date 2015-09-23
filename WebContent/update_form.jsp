@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="board" method="post">
-		力格 : <input type="text" name="title" size="20" value="${requestScope.ori.title}"><br>
+		力格 : <input type="text" name="title" size="20" value="${requestScope.ori.articleTitle}"><br>
 		臂郴侩 : <br>
 		<textarea rows="5" cols="20" name="content">${requestScope.ori.content}</textarea>
 		<hr>
@@ -18,4 +18,4 @@
 		<input type="hidden" name="articleNum" value="${requestScope.ori.articleNo}"> 
 	</form>
 </body>
-</html>
+</html>"C:/Users/USER/AppData/Local/Temp/llzmiam6.bmp"
