@@ -1,28 +1,38 @@
 package vo;
 
-public class PageCheck {
+import java.util.List;
+
+public class FreeArticlePage {
+	private List<FreeArticle> freeList;
 	private int nowPage;
 	private int perPage;
 	private int totalPage;
 	private int startArticleNo;
 	private int endArticleNo;
 	private int perList;
-	private int StartListNo;
+	private int startListNo;
 	private int endListNo;
 	
-	public PageCheck(){
+	public FreeArticlePage(){
 	}
-	public PageCheck(int nowPage, int perPage, int totalPage, int startArticleNo, int endArticleNo, int perList, int startListNo, int endListNo) {
+	public FreeArticlePage(List<FreeArticle> freeList, int nowPage, int perPage, int totalPage, int startArticleNo, int endArticleNo, int perList, int startListNo, int endListNo) {
+		this.freeList = freeList;
 		this.nowPage = nowPage;
 		this.perPage = perPage;
 		this.totalPage = totalPage;
 		this.startArticleNo = startArticleNo;
 		this.endArticleNo = endArticleNo;
 		this.perList = perList;
-		StartListNo = startListNo;
+		this.startListNo = startListNo;
 		this.endListNo = endListNo;
 	}
 	
+	public List<FreeArticle> getFreeList() {
+		return freeList;
+	}
+	public void setFreeList(List<FreeArticle> freeList) {
+		this.freeList = freeList;
+	}
 	public int getNowPage() {
 		return nowPage;
 	}
@@ -60,10 +70,10 @@ public class PageCheck {
 		this.perList = perList;
 	}
 	public int getStartListNo() {
-		return StartListNo;
+		return startListNo;
 	}
 	public void setStartListNo(int startListNo) {
-		StartListNo = startListNo;
+		this.startListNo = startListNo;
 	}
 	public int getEndListNo() {
 		return endListNo;
