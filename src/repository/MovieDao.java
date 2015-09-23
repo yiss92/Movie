@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import vo.MovieArticle;
 import vo.MovieReview;
@@ -70,6 +72,47 @@ public class MovieDao{
 			if(pstmt!=null){
 				try {pstmt.close();} catch (SQLException e) {}
 			}
+		}
+		return result;
+	}
+	
+	public List<MovieArticle> selectMovieList(int startRow, int count, int openCheck){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MovieArticle> result = new ArrayList<>();
+		try{
+			String sql = 
+				"select * from MOVIE_TB where OPEN_CHECK=? order by YMD desc limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, openCheck);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, count);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				MovieArticle article = new MovieArticle();
+				article.setMovieTitle(rs.getString(1));
+				article.setMovieImage(rs.getString(2));
+				article.setGenre1(rs.getString(3));
+				article.setGenre2(rs.getString(4));
+				article.setDirector(rs.getString(5));
+				article.setStar(rs.getString(6));
+				article.setProduction(rs.getString(7));
+				article.setStory(rs.getString(8));
+				article.setReadCount(rs.getInt(9));
+				article.setYmd(rs.getInt(10));
+				article.setOpenCheck(rs.getInt(11));
+				result.add(article);
+			}
+			
+		}catch(SQLException ex){
+			System.out.println("MovieDao selectMovieList error");
+			ex.printStackTrace();
+		}finally{
+			try{
+				if(rs != null){rs.close();} 
+				if(pstmt != null){pstmt.close();} 
+			}catch (SQLException e){e.printStackTrace();}
 		}
 		return result;
 	}
@@ -193,6 +236,42 @@ public class MovieDao{
 			if(pstmt!=null){
 				try {pstmt.close();} catch (SQLException e) {}
 			}
+		}
+		return result;
+	}
+	
+	public List<MovieReview> selectReviewList(int startRow, int count){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MovieReview> result = new ArrayList<>();
+		try{
+			String sql = 
+				"select * from MOVIE_REVIEW_TB order by ARTICLE_NO desc limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, count);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				MovieReview article = new MovieReview();
+				article.setArticleNo(rs.getInt(1));
+				article.setUserId(rs.getString(2));
+				article.setMovieTitle(rs.getString(3));
+				article.setArticleTitle(rs.getString(4));
+				article.setReview(rs.getString(5));
+				article.setReadCount(rs.getInt(6));
+				article.setYmd(rs.getTimestamp(7));
+				result.add(article);
+			}
+			
+		}catch(SQLException ex){
+			System.out.println("MovieDao selectReviewList error");
+			ex.printStackTrace();
+		}finally{
+			try{
+				if(rs != null){rs.close();} 
+				if(pstmt != null){pstmt.close();} 
+			}catch (SQLException e){e.printStackTrace();}
 		}
 		return result;
 	}
