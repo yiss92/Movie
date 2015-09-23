@@ -151,6 +151,24 @@ public class MovieDao{
 		return result;
 	}
 
+	public int updateReadCountMovie(MovieArticle movieArticle){
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			String sql="update MOVIE_TB set READ_COUNT=? where MOVIE_TITLE=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, movieArticle.getReadCount()+1);
+			pstmt.setString(2, movieArticle.getMovieTitle());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao updateReadCountMovie error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
+		}
+		return result;
+	}
 	
 	public int updateMovie(MovieArticle movieArticle){
 		PreparedStatement pstmt=null;
@@ -195,6 +213,7 @@ public class MovieDao{
 		}
 		return result;
 	}
+	
 	public int updateOpenChangeMovie(String movieTitle, int openCheck){
 		PreparedStatement pstmt=null;
 		int result=0;
@@ -215,7 +234,7 @@ public class MovieDao{
 		return result;
 	}
 	
-	
+
 	
 	public int insertReview(MovieReview movieReview){
 		PreparedStatement pstmt = null;
@@ -303,6 +322,25 @@ public class MovieDao{
 				if(rs!=null){rs.close();}
 				if(pstmt!=null){pstmt.close();}
 			} catch (SQLException e) {}
+		}
+		return result;
+	}
+	
+	public int updateReadCountReview(MovieReview movieReview){
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			String sql="update MOVIE_REVIEW_TB set READ_COUNT=? where ARTICLE_NO=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, movieReview.getReadCount()+1);
+			pstmt.setInt(2, movieReview.getArticleNo());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("MovieDao updateReadCountReview error");
+		}finally{
+			if(pstmt!=null){
+				try {pstmt.close();} catch (SQLException e) {}
+			}
 		}
 		return result;
 	}
