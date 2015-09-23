@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import service.BoardService;
 import service.MemberService;
@@ -35,6 +36,7 @@ public class BoardServlet extends HttpServlet {
 		String viewpath = "";
 
 		BoardService service = BoardService.getInstance();
+		HttpSession session = request.getSession(); 
 		
 		try {
 			if (type == null || type.equals("list")) {
@@ -62,6 +64,7 @@ public class BoardServlet extends HttpServlet {
 			}else if(type.equals("update_form")){
 				//±Û ¼öÁ¤ Æû
 				FreeArticle ori= service.readWithOutReadCount(request);
+				session.setAttribute("num", ori.getArticleNo());
 				request.setAttribute("ori", ori);
 				viewpath = "update_form.jsp";
 				

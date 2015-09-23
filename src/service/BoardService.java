@@ -84,10 +84,18 @@ public class BoardService {
 
 	public void ArticleUpdate(HttpServletRequest request) throws Exception {
 
-		String articleNoStr = request.getParameter("article_num");
+		//String articleNoStr = request.getParameter("article_num");
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-
+		String content = request.getParameter("content");		
+		
+		HttpSession session = request.getSession();
+		String articleNoStr = String.valueOf(session.getAttribute("num"));
+		
+		//HttpSession session = request.getSession();
+		String user = String.valueOf(session.getAttribute("user"));
+		
+		//System.out.println(temp);
+		
 		int articleNum = 0;
 		if (articleNoStr != null && articleNoStr.length() > 0)
 			articleNum = Integer.parseInt(articleNoStr);
@@ -106,8 +114,13 @@ public class BoardService {
 			dao.closeCon();
 			throw new Exception("존재하지 않는 글입니다. 수정 불가!");
 		}
-
-		dao.updateFree(article);
+        if(original.getUserId().equals(user)){
+		   dao.updateFree(article);
+		   dao.closeCon();
+        }else{
+        	dao.closeCon();
+    		throw new Exception("ID 오류!");
+        }
 		// if (article.getPassword() != null &&
 		// article.getPassword().equals(original.getPassword())) {
 		// dao.updateArticle(article); // 비밀번호 검사 통과하면 수정사항 db에 저장함.
