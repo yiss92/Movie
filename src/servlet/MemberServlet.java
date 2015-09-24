@@ -60,7 +60,7 @@ public class MemberServlet extends HttpServlet {
 				viewpath = "join.jsp";
 
 			} else if (type.equals("myPage")) {
-				viewpath = "myPage.html";
+				viewpath = "MyPage.html";
 
 			} else if (type.equals("updateForm")) {
 				viewpath = "UpdateForm.html";
@@ -79,7 +79,7 @@ public class MemberServlet extends HttpServlet {
 
 			} else if (type.equals("logout")) {
 				session.invalidate();//
-				viewpath = "logout.html";
+				viewpath = "Logout.html";
 
 			}
 
