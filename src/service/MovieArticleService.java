@@ -89,8 +89,7 @@ public class MovieArticleService {
 		// pstmt.setString(4, movieArticle.getStar());
 		// pstmt.setString(5, movieArticle.getProduction());
 		// pstmt.setString(6, movieArticle.getStory());
-		// pstmt.setInt(7, movieArticle.getYmd());
-		// pstmt.setString(8, movieArticle.getMovieTitle());
+		// pstmt.setInt(7, movieArticle.getYmd());		
 		String gen1 = request.getParameter("gen1");
 		String gen2 = request.getParameter("gen2");
 		String director = request.getParameter("director");
