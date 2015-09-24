@@ -136,7 +136,7 @@ public class BoardService {
 		String idStr = request.getParameter("article_num");
 		System.out.println(idStr);
 		int articleNum = Integer.parseInt(idStr);		
-		
+		//
 		HttpSession session = request.getSession();
 		// String articleNum = String.valueOf(session.getAttribute("num"));
 		// int artnum =Integer.parseInt(articleNum);

@@ -81,7 +81,8 @@ public class BoardServlet extends HttpServlet {
 			
 			}else if(type.equals("delete")){
 				//±€ ªË¡¶
-				service.deleteArticle(request);
+				System.out.println("delete");				
+				service.deleteArticle(request);				
 				viewpath = "delete.jsp";
 			}
 			
