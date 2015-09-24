@@ -18,4 +18,4 @@
 		<input type="hidden" name="articleNum" value="${requestScope.ori.articleNo}"> 
 	</form>
 </body>
-</html>"C:/Users/USER/AppData/Local/Temp/llzmiam6.bmp"
+</html>
