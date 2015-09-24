@@ -3,7 +3,7 @@ package service;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.Date;
-
+import java.util.List;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import repository.MovieDao;
 import vo.MovieArticle;
+import vo.MovieArticlePage;
 
 public class NowPlayingService {
 	
@@ -22,6 +23,8 @@ public class NowPlayingService {
 	public static NowPlayingService getInstance() {
 		return instance;
 	}
+	
+	public static final int COUNT_PER_PAGE = 10;
 	
 	public int writeMovie(HttpServletRequest request)
 			throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
@@ -80,6 +83,70 @@ public class NowPlayingService {
 		dao.closeCon();
 
 		return result;
+	}
+	
+	public MovieArticle getMovieArticle(HttpServletRequest request){
+		String title = request.getParameter("movie_title");				
+		
+		MovieDao dao = MovieDao.getInstance();
+		dao.startCon();
+
+		MovieArticle result = null;
+
+		if (dao.selectMovie(title) != null) {
+			// 조회수 증가 실행 결과가 1 이상이면 해당글이 존재하므로 select 실행
+			result = dao.selectMovie(title);
+		}
+
+		dao.closeCon();
+		return result;
+	}
+	
+	public MovieArticlePage gatMovieArticlePage(HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		// 현재 요청하는 페이지 파라미터 int로 받아내기
+		String pageStr = request.getParameter("page");
+		String check = request.getParameter("openChek");
+		int openCheck = Integer.parseInt(check);
+		
+		int requestPage = 1;
+		if (pageStr != null && pageStr.length() > 0) {
+			requestPage = Integer.parseInt(pageStr);
+		}
+      
+		MovieDao dao = MovieDao.getInstance();
+		dao.startCon();
+
+		// 총 게시글의 갯수 조회
+		int totalArticleCount = dao.selectMovieCount(openCheck);// selectArticleCount();
+
+		// 게시글이 없는 경우
+		if (totalArticleCount == 0) {
+			return new MovieArticlePage();
+		}
+
+		// 총 페이지수 계산
+		int totalPageCount = totalArticleCount / COUNT_PER_PAGE;
+		if (totalArticleCount % COUNT_PER_PAGE != 0) {
+			totalPageCount++;
+		}
+
+		int startRow = (requestPage - 1) * COUNT_PER_PAGE;
+        int chack=1;
+		// 현재 페이지에 보여질 글들을 DB에서 조회하기
+		List<MovieArticle> articleList = dao.selectMovieList(startRow, COUNT_PER_PAGE,chack);
+
+		// 페이지 하단에 링크할 startPage, endPage 계산
+		int startPage = requestPage - 5;
+		if (startPage < 1) {
+			startPage = 1;
+		}
+		int endPage = requestPage + 5;
+		if (endPage > totalPageCount) {
+			endPage = totalPageCount;
+		}
+
+		dao.closeCon(); // closeConnection();
+		return new MovieArticlePage(articleList, requestPage, totalPageCount, startPage, endPage);
 	}
 	
 	public void modifyMovie(HttpServletRequest request) throws Exception {
