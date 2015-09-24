@@ -34,6 +34,8 @@ public class MovieArticleService {
 		String director = request.getParameter("director");
 		String star = request.getParameter("star");
 		String production = request.getParameter("production");
+		String opencheckStr = request.getParameter("opencheck");
+		int opencheck = Integer.parseInt(opencheckStr);
 
 		// HttpSession session = request.getSession();
 		// String temp = String.valueOf(session.getAttribute("user"));
@@ -53,6 +55,7 @@ public class MovieArticleService {
 		article.setStar(star);
 		article.setProduction(production);
 		article.setYmd(time);
+		article.setOpenCheck(opencheck);
 
 		MovieDao dao = MovieDao.getInstance();
 		dao.startCon();
