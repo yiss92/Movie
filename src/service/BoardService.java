@@ -30,11 +30,11 @@ public class BoardService {
 		// String writerName = request.getParameter("writerName");
 		// String password = request.getParameter("password");
 		// String content = request.getParameter("content");
-		//String id = request.getParameter("member_id");
+		// String id = request.getParameter("member_id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		// String count = request.getParameter("count");
-        //
+		//
 		// pstmt.setString(1, freeArticle.getUserId());
 		// pstmt.setString(2, freeArticle.getArticleTitle());
 		// pstmt.setString(3, freeArticle.getContent());
@@ -42,7 +42,7 @@ public class BoardService {
 		// pstmt.setTimestamp(5,new Timestamp(freeArticle.getYmd().getTime()));
 		HttpSession session = request.getSession();
 		String temp = String.valueOf(session.getAttribute("user"));
-		
+
 		FreeArticle article = new FreeArticle();
 		article.setUserId(temp);
 		article.setArticleTitle(title);
@@ -60,7 +60,7 @@ public class BoardService {
 		return result;
 	}
 
-	//조회 후 count 값 올라 갈때
+	// 조회 후 count 값 올라 갈때
 	public FreeArticle read(HttpServletRequest request) {
 
 		String idStr = request.getParameter("articleNum");
@@ -84,18 +84,18 @@ public class BoardService {
 
 	public void ArticleUpdate(HttpServletRequest request) throws Exception {
 
-		//String articleNoStr = request.getParameter("article_num");
+		// String articleNoStr = request.getParameter("article_num");
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");		
-		
+		String content = request.getParameter("content");
+
 		HttpSession session = request.getSession();
 		String articleNoStr = String.valueOf(session.getAttribute("num"));
-		
-		//HttpSession session = request.getSession();
+
+		// HttpSession session = request.getSession();
 		String user = String.valueOf(session.getAttribute("user"));
-		
-		//System.out.println(temp);
-		
+
+		// System.out.println(temp);
+
 		int articleNum = 0;
 		if (articleNoStr != null && articleNoStr.length() > 0)
 			articleNum = Integer.parseInt(articleNoStr);
@@ -114,13 +114,13 @@ public class BoardService {
 			dao.closeCon();
 			throw new Exception("존재하지 않는 글입니다. 수정 불가!");
 		}
-        if(original.getUserId().equals(user)){
-		   dao.updateFree(article);
-		   dao.closeCon();
-        }else{
-        	dao.closeCon();
-    		throw new Exception("ID 오류!");
-        }
+		if (original.getUserId().equals(user)) {
+			dao.updateFree(article);
+			dao.closeCon();
+		} else {
+			dao.closeCon();
+			throw new Exception("ID 오류!");
+		}
 		// if (article.getPassword() != null &&
 		// article.getPassword().equals(original.getPassword())) {
 		// dao.updateArticle(article); // 비밀번호 검사 통과하면 수정사항 db에 저장함.
@@ -132,10 +132,19 @@ public class BoardService {
 		// }
 	}
 
-	public void deleteArticle(HttpServletRequest request) throws Exception {
-
+	public void deleteArticle(HttpServletRequest request) throws Exception {		
 		String idStr = request.getParameter("article_num");
-		int articleNum = Integer.parseInt(idStr);
+		System.out.println(idStr);
+		int articleNum = Integer.parseInt(idStr);		
+		
+		HttpSession session = request.getSession();
+		// String articleNum = String.valueOf(session.getAttribute("num"));
+		// int artnum =Integer.parseInt(articleNum);
+		// HttpSession session = request.getSession();
+		String user = String.valueOf(session.getAttribute("user"));
+
+		System.out.println(articleNum);
+		System.out.println(user);
 
 		FreeDao dao = FreeDao.getInstance();
 		dao.startCon();
@@ -148,7 +157,7 @@ public class BoardService {
 			throw new Exception("존재하지 않는 글입니다. 수정 불가!");
 		}
 
-		if (articleNum == original.getArticleNo()) {
+		if (articleNum == original.getArticleNo() && original.getUserId().equals(user)) {
 			dao.deleteFree(articleNum); // articleNum db에 있는 거 삭제시킴.
 			dao.closeCon();
 		} else {
@@ -158,7 +167,7 @@ public class BoardService {
 		}
 	}
 
-	//조회후 수정할때 count 값 올라가지 않을때.
+	// 조회후 수정할때 count 값 올라가지 않을때.
 	public FreeArticle readWithOutReadCount(HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
 		String idStr = request.getParameter("articleNum");
@@ -173,7 +182,7 @@ public class BoardService {
 		return result;
 	}
 
-	 //자유게시판 페이지 만큼 읽어 올때
+	// 자유게시판 페이지 만큼 읽어 올때
 	public FreeArticlePage getArticlePage(HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		// 현재 요청하는 페이지 파라미터 int로 받아내기
 		String pageStr = request.getParameter("page");
