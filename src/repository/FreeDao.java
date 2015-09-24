@@ -202,7 +202,7 @@ public class FreeDao{
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
-			String sql="delete from FREE_ARTICLE_TB where ARTICLE_ID=?";
+			String sql="delete from FREE_ARTICLE_TB where ARTICLE_NO=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, articleNO);
 			result=pstmt.executeUpdate();

@@ -133,7 +133,7 @@ public class BoardService {
 	}
 
 	public void deleteArticle(HttpServletRequest request) throws Exception {		
-		String idStr = request.getParameter("article_num");
+		String idStr = request.getParameter("articleNum");
 		System.out.println(idStr);
 		int articleNum = Integer.parseInt(idStr);		
 		//
@@ -143,7 +143,7 @@ public class BoardService {
 		// HttpSession session = request.getSession();
 		String user = String.valueOf(session.getAttribute("user"));
 
-		System.out.println(articleNum);
+		System.out.println(idStr);
 		System.out.println(user);
 
 		FreeDao dao = FreeDao.getInstance();
