@@ -183,9 +183,10 @@ public class MovieDao{
 		ResultSet rs=null;
 		MovieArticle result=new MovieArticle();
 		try {
-			String sql="select * from MOVIE_TB where MOVIE_TITLE=?";
+			String sql="select *, (select avg(score) from MOVIE_COMMENT_TB where MOVIE_TITLE=? group by movie_title) score from MOVIE_TB where MOVIE_TITLE=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, movieTitle);
+			pstmt.setString(2, movieTitle);
 
 			rs = pstmt.executeQuery();
 			if(rs.next()){
@@ -200,6 +201,7 @@ public class MovieDao{
 				result.setReadCount(rs.getInt(9));
 				result.setYmd(rs.getInt(10));
 				result.setYmd(rs.getInt(11));
+				result.setScore(rs.getDouble(12));
 			}
 		} catch (SQLException e) {
 			System.out.println("MovieDao selectMovie error");
