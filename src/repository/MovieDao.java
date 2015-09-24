@@ -85,7 +85,7 @@ public class MovieDao{
 			String sql = "select count(*) from MOVIE_TB where=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, openCheck);
-			rs = pstmt.executeQuery(sql);
+			rs = pstmt.executeQuery();
 			rs.next();
 			result = rs.getInt(1);			
 		}catch(SQLException ex){
@@ -95,6 +95,35 @@ public class MovieDao{
 			try{
 				if(rs != null){rs.close();}
 				if(pstmt != null){pstmt.close();} 
+			}catch (SQLException e){e.printStackTrace();}
+		}
+		return result;
+	}
+	
+	public List<MovieArticle> selectBest5(){
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<MovieArticle> result = new ArrayList<>();
+		try{
+			String sql = "select m.movie_title, movie_image, director, star, avg(s.score) score from movie_tb m, movie_comment_tb s where m.MOVIE_TITLE=s.MOVIE_TITLE group by movie_title order by avg(s.score) desc limit 1,5;";
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			rs.next();
+			while (rs.next()) {
+				MovieArticle movieArticle=new MovieArticle();
+				movieArticle.setMovieTitle(rs.getString(1));
+				movieArticle.setMovieImage(rs.getString(2));
+				movieArticle.setDirector(rs.getString(3));
+				movieArticle.setStar(rs.getString(4));
+				movieArticle.setScore(rs.getDouble(5));
+			}		
+		}catch(SQLException ex){
+			System.out.println("MovieDao selectBest5 error");
+			ex.printStackTrace();
+		}finally{
+			try{
+				if(rs != null){rs.close();}
+				if(stmt != null){stmt.close();} 
 			}catch (SQLException e){e.printStackTrace();}
 		}
 		return result;

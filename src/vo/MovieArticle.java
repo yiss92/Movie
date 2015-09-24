@@ -14,6 +14,7 @@ public class MovieArticle {
 	private int readCount;
 	private int ymd;
 	private int openCheck;
+	private double score;
 
 	public MovieArticle(){
 	}
@@ -97,5 +98,11 @@ public class MovieArticle {
 	}
 	public void setOpenCheck(int openCheck) {
 		this.openCheck = openCheck;
+	}
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
 	}
 }
