@@ -156,7 +156,7 @@ public class BoardService {
 			dao.closeCon();
 			throw new Exception("존재하지 않는 글입니다. 수정 불가!");
 		}
-
+//
 		if (articleNum == original.getArticleNo() && original.getUserId().equals(user)) {
 			dao.deleteFree(articleNum); // articleNum db에 있는 거 삭제시킴.
 			dao.closeCon();
