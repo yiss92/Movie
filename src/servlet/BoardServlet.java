@@ -40,47 +40,47 @@ public class BoardServlet extends HttpServlet {
 		
 		try {
 			if (type == null || type.equals("list")) {
-				// ∏Ò∑œ∫∏±‚ 
+				// Î™©Î°ùÎ≥¥Í∏∞ 
 				FreeArticlePage freeArticlePage = service.getArticlePage(request);
 				request.setAttribute("freeArticlePage", freeArticlePage);
 				viewpath="list.jsp";
 				
 			}else if(type.equals("write_form")){
-				//±€ æ≤±‚ ∆˚
+				//Í∏Ä Ïì∞Í∏∞ Ìèº
 				viewpath = "write_form.jsp";
 			
 			}else if(type.equals("write")){
-				//±€ æ≤±‚ 
+				//Í∏Ä Ïì∞Í∏∞ 
 				int result = service.write(request);
 				request.setAttribute("result", result);
 				viewpath = "write.jsp";
 				
 			}else if(type.equals("read")){
-				//±€ ¿–±‚
+				//Í∏Ä ÏùΩÍ∏∞
 				FreeArticle free=service.read(request);
 				request.setAttribute("free", free);
 				viewpath = "read.jsp";
 				
 			}else if(type.equals("update_form")){
-				//±€ ºˆ¡§ ∆˚
+				//Í∏Ä ÏàòÏ†ï Ìèº
 				FreeArticle ori= service.readWithOutReadCount(request);
 				session.setAttribute("num", ori.getArticleNo());
 				request.setAttribute("ori", ori);
 				viewpath = "update_form.jsp";
 				
 			}else if(type.equals("update")){
-				//±€ ºˆ¡§
+				//Í∏Ä ÏàòÏ†ï
 				service.ArticleUpdate(request);
 				viewpath = "update.jsp";
 				
 			}else if(type.equals("delete_form")){
-				//±€ ªË¡¶ ∆˚
+				//Í∏Ä ÏÇ≠Ï†ú Ìèº
 				FreeArticle ori= service.readWithOutReadCount(request);
 				request.setAttribute("ori", ori);
 				viewpath = "delete_form.jsp";
 			
 			}else if(type.equals("delete")){
-				//±€ ªË¡¶
+				//Í∏Ä ÏÇ≠Ï†ú
 				System.out.println("delete");				
 				service.deleteArticle(request);				
 				viewpath = "delete.jsp";
