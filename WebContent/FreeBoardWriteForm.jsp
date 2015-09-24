@@ -77,7 +77,7 @@
     <div class="container">
           <div class="row">
         <article class="span8">
-              <h3>FreeBoard Write</h3>
+              <h3>°Ô½ÃÆÇ</h3>
               <div class="inner-1">
             <form id="contact-form" action="board" method="post">
 <!--                   <div class="success"> Contact form submitted! <strong>We will be in touch soon.</strong> </div> -->
