@@ -99,7 +99,7 @@ public class MovieDao{
 		}
 		return result;
 	}
-	//
+	
 	public List<MovieArticle> selectBest5(){
 		Statement stmt = null;
 		ResultSet rs = null;
