@@ -134,8 +134,13 @@ public class MovieDao{
 		ResultSet rs = null;
 		List<MovieArticle> result = new ArrayList<>();
 		try{
-			String sql = 
-				"select * from MOVIE_TB where OPEN_CHECK=? order by YMD desc limit ?,?";
+			String sql="";
+			if(openCheck==1){
+				sql = "select m.*, avg(s.score) score from MOVIE_TB m, MOVIE_COMMENT_TB s where OPEN_CHECK=? and m.MOVIE_TITLE=s.MOVIE_TITLE group by movie_title order by YMD desc limit ?,?";
+			}else{
+				sql = "select * from MOVIE_TB where OPEN_CHECK=? order by YMD desc limit ?,?";
+			}
+			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, openCheck);
 			pstmt.setInt(2, startRow);
@@ -155,6 +160,9 @@ public class MovieDao{
 				article.setReadCount(rs.getInt(9));
 				article.setYmd(rs.getInt(10));
 				article.setOpenCheck(rs.getInt(11));
+				if(openCheck==1){
+					article.setScore(rs.getInt(12));
+				}
 				result.add(article);
 			}
 			
