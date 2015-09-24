@@ -454,7 +454,7 @@ public class MovieDao{
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
-			String sql="delete from MOVIE_REVIEW_TB where ARTICLE_ID=?";
+			String sql="delete from MOVIE_REVIEW_TB where ARTICLE_NO=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, articleNO);
 			result=pstmt.executeUpdate();
