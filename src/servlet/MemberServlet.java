@@ -48,43 +48,43 @@ public class MemberServlet extends HttpServlet {
 				request.setAttribute("movie", movie);
 				System.out.println("Å×½ºÆ®3");
 				viewpath = "Main.jsp";
-
+//////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("login")) {
 				User result = service.memberSelect(request);
 				request.setAttribute("result", result);
 
 				session.setAttribute("user", result.getUserId());///
 				viewpath = "FrontPage1-1.html";
-				
+//////////////////////////////////////////////////////////////////////////////////////				
 			} else if (type.equals("login-1")) {
 				viewpath = "FrontPage1-1.html";
-
+//////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("joinForm")) {
 				viewpath = "joinForm.html";
-
+//////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("join")) {
 				int result = service.registeMember(request);
 				request.setAttribute("result", result);
 				viewpath = "join.jsp";
-
+//////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("myPage")) {
 				viewpath = "MyPage.html";
-
+//////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("updateForm")) {
-				viewpath = "FreeBoardWriteForm.jsp";
-
+				viewpath = "UpdateForm.html";
+//////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("update")) {
 				service.updateMember(request);
-				viewpath = "correctionPage.jsp";
-
+				viewpath = "Update.html";
+//////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("deleteForm")) {
 				viewpath = "DeleteForm.html";
-
+//////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("delete")) {
 				service.deleteMember(request);
 				session.invalidate();//
 				viewpath = "Delete.html";
-
+//////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("logout")) {
 				session.invalidate();//
 				viewpath = "Logout.html";
