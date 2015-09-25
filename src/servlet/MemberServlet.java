@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import repository.UserDao;
 import service.MemberService;
+import service.MovieArticleService;
+import vo.MovieArticlePage;
 import vo.User;
 
 @WebServlet(urlPatterns = "/movie")
@@ -34,12 +36,18 @@ public class MemberServlet extends HttpServlet {
 		String viewpath = "";
 
 		MemberService service = MemberService.getInstance();
+		MovieArticleService MovieSer = MovieArticleService.getInstance();
 		HttpSession session = request.getSession(); ///
 
 		try {
 
 			if (type == null || type.equals("loginForm")) {
-				viewpath = "FrontPage1.html";
+				System.out.println("테스트1");
+				MovieArticlePage movie =MovieSer.getArticlePage5(request);
+				System.out.println("테스트2");
+				request.setAttribute("movie", movie);
+				System.out.println("테스트3");
+				viewpath = "Main.jsp";
 
 			} else if (type.equals("login")) {
 				User result = service.memberSelect(request);

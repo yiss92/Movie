@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import service.MemberService;
 import service.MovieArticleService;
+import vo.MovieArticle;
 import vo.MovieArticlePage;
 import vo.User;
 
@@ -47,10 +48,25 @@ public class MovieServlet extends HttpServlet{
 				viewpath = "NowMovie.jsp";
 				
 
-			} else if (type.equals("soonMovie")) {
+			} else if (type.equals("nowMovieRead")) {
+				//현재상영작에서 영화누르면 영화정보 나오게
+				//아직 페이지없어서 테스트 안해봄.
+				MovieArticle now =service.MovieArticleread(request);
+				request.setAttribute("now", now);
+				viewpath = "";
+		
+			}  else if (type.equals("soonMovie")) {
 				MovieArticlePage movieArticlePage = service.ExpectedPrgetArticlePage(request);
 				request.setAttribute("movieArticlePage", movieArticlePage);
 				viewpath = "SoonMovie.jsp";
+			
+			} else if (type.equals("soonMovieRead")) {
+				//상영예정에서 영화누르면 영화정보 나오게
+				//아직 페이지없어서 테스트 안해봄.
+				MovieArticle now =service.MovieArticleread(request);
+				request.setAttribute("now", now);
+				viewpath = "";
+				
 			}
 
 		} catch (Exception e) {
