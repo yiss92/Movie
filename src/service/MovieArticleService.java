@@ -197,8 +197,8 @@ public class MovieArticleService {
 	public MovieArticlePage getArticlePage(HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		// 현재 요청하는 페이지 파라미터 int로 받아내기
 		String pageStr = request.getParameter("page");
-		String openCheck = request.getParameter("openCheck");
-		int Check = Integer.parseInt(openCheck);
+		//String openCheck = request.getParameter("openCheck");
+		int Check = 1;// Integer.parseInt(openCheck);
 		int requestPage = 1;
 		if (pageStr != null && pageStr.length() > 0) {
 			requestPage = Integer.parseInt(pageStr);
@@ -206,7 +206,54 @@ public class MovieArticleService {
 
 		MovieDao dao = MovieDao.getInstance();
 		dao.startCon();
+         
+		// 총 게시글의 갯수 조회
+		int totalArticleCount = dao.selectMovieCount(Check); // dao.selectArticleCount();
 
+		// 게시글이 없는 경우
+		if (totalArticleCount == 0) {
+			return new MovieArticlePage();
+		}
+
+		// 총 페이지수 계산
+		int totalPageCount = totalArticleCount / COUNT_PER_PAGE;
+		if (totalArticleCount % COUNT_PER_PAGE != 0) {
+			totalPageCount++;
+		}
+
+		int startRow = (requestPage - 1) * COUNT_PER_PAGE;
+
+		// 현재 페이지에 보여질 글들을 DB에서 조회하기
+		List<MovieArticle> articleList = dao.selectMovieList(startRow, COUNT_PER_PAGE, Check); // dao.selectArticleList(startRow,
+																						// COUNT_PER_PAGE);
+
+		// 페이지 하단에 링크할 startPage, endPage 계산
+		int startPage = requestPage - 5;
+		if (startPage < 1) {
+			startPage = 1;
+		}
+		int endPage = requestPage + 5;
+		if (endPage > totalPageCount) {
+			endPage = totalPageCount;
+		}
+
+		dao.closeCon();// dao.closeConnection();
+		return new MovieArticlePage(articleList, requestPage, totalPageCount, startPage, endPage);
+	}
+	
+	public MovieArticlePage ExpectedPrgetArticlePage(HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		// 현재 요청하는 페이지 파라미터 int로 받아내기
+		String pageStr = request.getParameter("page");
+		//String openCheck = request.getParameter("openCheck");
+		int Check = 0;// Integer.parseInt(openCheck);
+		int requestPage = 1;
+		if (pageStr != null && pageStr.length() > 0) {
+			requestPage = Integer.parseInt(pageStr);
+		}
+
+		MovieDao dao = MovieDao.getInstance();
+		dao.startCon();
+         
 		// 총 게시글의 갯수 조회
 		int totalArticleCount = dao.selectMovieCount(Check); // dao.selectArticleCount();
 
