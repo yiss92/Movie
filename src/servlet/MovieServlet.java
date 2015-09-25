@@ -47,12 +47,10 @@ public class MovieServlet extends HttpServlet{
 				viewpath = "NowMovie.jsp";
 				
 
-			} else if (type.equals("")) {
-
-				viewpath = "";
-				
-			
-
+			} else if (type.equals("soonMovie")) {
+				MovieArticlePage movieArticlePage = service.ExpectedPrgetArticlePage(request);
+				request.setAttribute("movieArticlePage", movieArticlePage);
+				viewpath = "SoonMovie.jsp";
 			}
 
 		} catch (Exception e) {
