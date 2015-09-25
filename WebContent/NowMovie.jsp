@@ -96,7 +96,7 @@
         <ul class="thumbnails thumbnails-1 list-services">
              <c:forEach var="now" items="${requestScope.movieArticlePage.movieList}">
               <li class="span4">
-            <div class="thumbnail thumbnail-1"> <img  src="${now.movieImage}" alt="">
+            <div class="thumbnail thumbnail-1"> <img  src="/Movie${now.movieImage}" alt="">
                   <section> <a href="#" class="link-1">${now.movieTitle}</a>
                 
               </section>

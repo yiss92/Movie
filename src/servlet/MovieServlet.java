@@ -42,11 +42,8 @@ public class MovieServlet extends HttpServlet{
 		try {
 
 			if (type == null || type.equals("nowMovie")) {
-				System.out.println("test1");
 				MovieArticlePage movieArticlePage = service.getArticlePage(request);
-				System.out.println("test2");
 				request.setAttribute("movieArticlePage", movieArticlePage);
-				System.out.println("test3");
 				viewpath = "NowMovie.jsp";
 				
 
