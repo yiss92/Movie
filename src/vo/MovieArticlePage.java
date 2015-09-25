@@ -15,6 +15,13 @@ public class MovieArticlePage {
 	
 	public MovieArticlePage(){
 	}
+		
+	
+	public MovieArticlePage(List<MovieArticle> movieList) {
+		super();
+		this.movieList = movieList;
+	}
+
 	public MovieArticlePage(List<MovieArticle> movieList, int nowPage, int totalPage, int startArticleNo, int endArticleNo ){
 		this.movieList = movieList;
 		this.nowPage = nowPage;

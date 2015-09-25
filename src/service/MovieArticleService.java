@@ -169,6 +169,31 @@ public class MovieArticleService {
 		return result;
 	}
 	
+//	public MovieArticle readOpenChack(HttpServletRequest request){
+//		String title = request.getParameter("opencheck");
+//		
+//		MovieDao dao = MovieDao.getInstance();
+//		dao.startCon();
+//		
+//		MovieArticle result = dao.se (title);// selectArticle(articleId);
+//
+//		dao.closeCon();
+//		return result;
+//	}
+	
+	public MovieArticlePage getArticlePage5(HttpServletRequest request){
+		
+		MovieArticlePage result = new MovieArticlePage();
+		
+		MovieDao dao = MovieDao.getInstance();
+		dao.startCon();
+		
+		List<MovieArticle> articleList = dao.selectBest5();
+		dao.closeCon();
+		
+		return new MovieArticlePage(articleList);				
+	}
+	
 	public MovieArticlePage getArticlePage(HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		// 현재 요청하는 페이지 파라미터 int로 받아내기
 		String pageStr = request.getParameter("page");
