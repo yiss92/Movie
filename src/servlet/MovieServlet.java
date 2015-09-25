@@ -12,9 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import service.MemberService;
 import service.MovieArticleService;
+import vo.MovieArticlePage;
 import vo.User;
 
-@WebServlet(urlPatterns="/movie")
+@WebServlet(urlPatterns="/Mmovie")
 public class MovieServlet extends HttpServlet{
 	
 	@Override
@@ -40,8 +41,14 @@ public class MovieServlet extends HttpServlet{
 
 		try {
 
-			if (type == null || type.equals("")) {
-				viewpath = "";
+			if (type == null || type.equals("nowMovie")) {
+				System.out.println("test1");
+				MovieArticlePage movieArticlePage = service.getArticlePage(request);
+				System.out.println("test2");
+				request.setAttribute("movieArticlePage", movieArticlePage);
+				System.out.println("test3");
+				viewpath = "NowMovie.jsp";
+				
 
 			} else if (type.equals("")) {
 

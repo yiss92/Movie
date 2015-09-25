@@ -82,7 +82,7 @@ public class MovieDao{
 		ResultSet rs = null;
 		int result = 0;
 		try{
-			String sql = "select count(*) from MOVIE_TB where=?";
+			String sql = "select count(*) from MOVIE_TB where open_check=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, openCheck);
 			rs = pstmt.executeQuery();
