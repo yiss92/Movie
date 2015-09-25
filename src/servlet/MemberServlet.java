@@ -71,11 +71,11 @@ public class MemberServlet extends HttpServlet {
 				viewpath = "MyPage.html";
 
 			} else if (type.equals("updateForm")) {
-				viewpath = "UpdateForm.html";
+				viewpath = "FreeBoardWriteForm.jsp";
 
 			} else if (type.equals("update")) {
 				service.updateMember(request);
-				viewpath = "Update.html";
+				viewpath = "correctionPage.jsp";
 
 			} else if (type.equals("deleteForm")) {
 				viewpath = "DeleteForm.html";
