@@ -9,7 +9,7 @@
 </head>
 <body>
 <%
-   response.sendRedirect("/movie");
+   response.sendRedirect("/Movie");
 %>
 </body>
 </html>
