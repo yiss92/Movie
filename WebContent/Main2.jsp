@@ -110,7 +110,7 @@
     <div class ="row">
           <div class ="span12">
 
-					<!--============================== slider =================================-->
+				<!--============================== slider =================================-->
 					<div class="flexslider">
 						<ul class="slides">
 							<!--             <li> <img  src="/Movie${main.movieImage}" alt=""></li> -->

@@ -44,14 +44,14 @@ public class MemberServlet extends HttpServlet {
 		try {
 
 			if (type == null || type.equals("loginForm")) {
-				System.out.println("테스트1");
 				List<MovieArticle> movie =MovieSer.getArticlePage5(request);				
-				System.out.println("테스트2");
 				request.setAttribute("movie", movie);
-				System.out.println("테스트3");
 				viewpath = "Main.jsp";
 //////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("login")) {
+				List<MovieArticle> movie =MovieSer.getArticlePage5(request);				
+				request.setAttribute("movie", movie);
+				
 				User result = service.memberSelect(request);
 				request.setAttribute("result", result);
 
@@ -59,6 +59,9 @@ public class MemberServlet extends HttpServlet {
 				viewpath = "Main2.jsp";
 //////////////////////////////////////////////////////////////////////////////////////				
 			} else if (type.equals("login-1")) {
+				List<MovieArticle> movie =MovieSer.getArticlePage5(request);				
+				request.setAttribute("movie", movie);
+				
 				viewpath = "Main2.jsp";
 //////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("joinForm")) {

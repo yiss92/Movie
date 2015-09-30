@@ -97,7 +97,7 @@
              <c:forEach var="soon" items="${requestScope.movieArticlePage.movieList}">
               <li class="span4">
             <div class="thumbnail thumbnail-1"> <img  src="/Movie${soon.movieImage}" alt="">
-                  <section> <a href="Mmovie?type=soonMovieRead&movieTitile=${soon.movieTitle}" class="link-1">${soon.movieTitle}</a>
+                  <section> <a href="Mmovie?type=soonMovieRead&titile=${soon.movieTitle}" class="link-1">${soon.movieTitle}</a>
                 
               </section>
                 </div>
