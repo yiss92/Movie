@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	<title>Services</title>
+	<title>Blog</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -17,22 +18,24 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/superfish.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>   
+    
 	<script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}	</script>
 	<script>		
 		 jQuery(window).load(function() {	
 		 $x = $(window).width();		
 	if($x > 1024)
 	{			
-	jQuery("#content .row").preloader();    }			 
-		
-		 jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
-		 
+	jQuery("#content .row").preloader();}	
+	
+	jQuery(".list-blog li:last-child").addClass("last"); 
+	jQuery(".list li:last-child").addClass("last"); 
+
+	
+    jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
   		  }); 
-				
-		 
-		 
+					
 	</script>
 
 	<!--[if lt IE 8]>
@@ -50,7 +53,6 @@
 	</head>
 
 	<body>
-	
 <div class="spinner"></div>
 <!--============================== header =================================-->
 <header>
@@ -82,32 +84,35 @@
         </div>
   </div>
     </header>
-<div class="bg-content"> 
-      
-      <!--============================== content =================================-->
-      
-      <div id="content"><div class="ic"></div>
+<div class="bg-content">     
+  <!--============================== content =================================-->      
+   <div id="content"><div class="ic"></div>
     <div class="container">
           <div class="row">
-        <article class="span12">
-              <h3>개봉예정</h3>
-            </article>
-        <div class="clear"></div>
-        <ul class="thumbnails thumbnails-1 list-services">
-             <c:forEach var="soon" items="${requestScope.movieArticlePage.movieList}">
-              <li class="span4">
-            <div class="thumbnail thumbnail-1"> <img  src="/Movie${soon.movieImage}" alt="">
-                  <section> <a href="Mmovie?type=soonMovieRead&movieTitile=${soon.movieTitle}" class="link-1">${soon.movieTitle}</a>
-                
-              </section>
-                </div>
-          </li>
-            </c:forEach>
-            </ul>
+        <article class="span8">
+         <div class="inner-1">         
+          <ul class="list-blog">
+            <li>  
+            <h3>${requestScope.soon.movieTitle} (${requestScope.soon.ymd})</h3>     
+<!--             <div class="name-author">by Admin</div> -->
+            <div class="clear"></div>            
+              <img alt="" src="/Movie${requestScope.soon.movieImage}">  
+              <h5>${requestScope.soon.director}</h5>
+              <h5>${requestScope.soon.star}</h5>
+              <h5>평점과 한줄평들어올 자리</h5>                             
+            </li>  
+                        
+          
+                                 
+          </ul>
+          </div>  
+        </article>
+      
       </div>
-        </div>
+     </div>
   </div>
-    </div>
+ </div>
+
 
 </body>
 </html>

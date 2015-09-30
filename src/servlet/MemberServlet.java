@@ -56,10 +56,10 @@ public class MemberServlet extends HttpServlet {
 				request.setAttribute("result", result);
 
 				session.setAttribute("user", result.getUserId());///
-				viewpath = "FrontPage1-1.html";
+				viewpath = "Main2.jsp";
 //////////////////////////////////////////////////////////////////////////////////////				
 			} else if (type.equals("login-1")) {
-				viewpath = "FrontPage1-1.html";
+				viewpath = "Main2.jsp";
 //////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("joinForm")) {
 				viewpath = "joinForm.html";

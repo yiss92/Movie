@@ -71,65 +71,64 @@
      </head >
 
      <body >
-    <div class ="spinner"></ div>
+    <div class ="spinner"></div>
 <!--============================== header =================================-->
 <header>
            
-<a href ="movie?type=myPage">< button id= "inform">회원정보 </button ></a >
-<a href ="movie?type=logout">< button id= "inform">로그아웃 </button ></a >
+<a href ="movie?type=myPage"><button id= "inform">회원정보 </button ></a >
+<a href ="movie?type=logout"><button id= "inform">로그아웃 </button ></a >
       <div class ="container clearfix">
     <div class ="row">
           <div class ="span12">
         <div class ="navbar navbar_">
               <div class ="container">
-            <h1 class ="brand brand_">< a href= "movie?type=login-1"><img alt ="" src="img/MainTopic.JPG"> </a></ h1>
-            <a class ="btn btn-navbar btn-navbar_" data-toggle= "collapse" data-target =".nav-collapse_"> Menu < span class= "icon-bar"></span > </a >
+            <h1 class ="brand brand_"><a href= "movie?type=login-1"><img alt ="" src="img/MainTopic.JPG"> </a></h1>
+            <a class ="btn btn-navbar btn-navbar_" data-toggle= "collapse" data-target =".nav-collapse_"> Menu <span class= "icon-bar"></span > </a >
             <div class ="nav-collapse nav-collapse_  collapse">
                   <ul class ="nav sf-menu">
                 <li ><a href= "Mmovie?type=nowMovie">상영작 </a ></li >
-                <li class ="sub-menu">< a href= "Mmovie?type=soonMovie">개봉예정 </a >
+                <li class ="sub-menu"><a href= "Mmovie?type=soonMovie">개봉예정 </a >
 <!--                       <ul> -->
 <!--                     <li><a href="#">Dolore </a></li> -->
 <!--                     <li><a href="#">Consecte</a></li> -->
 <!--                     <li><a href="#">Conseq</a></li> -->
 <!--                   </ul> -->
                     </li >
-                <li ><a href ="index-2.html"> 평점</ a></ li>
-                <li ><a href ="index-3.html"> 리뷰</ a></ li>
-                <li ><a href ="board?type=list"> 게시판</ a></ li>
+                <li ><a href ="index-2.html"> 평점</a></li>
+                <li ><a href ="index-3.html"> 리뷰</a></li>
+                <li ><a href ="board?type=list"> 게시판</a></li>
               </ul >
                 </div >
           </div >
             </div >
       </div >
         </div >
-  </ div>
+  </div>
     </header >
 <div class="bg-content">
       <div class ="container">
     <div class ="row">
           <div class ="span12">
-        <!--============================== slider =================================-->
-        <div class ="flexslider">
-              <ul class ="slides">
-<!--             <li> <img  src="/Movie${main.movieImage}" alt=""></li> -->
-             <c:forEach var ="main" items= "${requestScope.movie.movieList} ">
-                  <li > <img   src ="/Movie${main.movieImage}" alt= ""></li >
-            </c:forEach >
-          </ul >
-            </div >
-           
-        <span id ="responsiveFlag"></ span>
-        <div class ="block-slogan">
-              <h2 >Welcome! </h2 >
-<!--               <div> -->
-<!--             <p><a href="http://www.oswt.co.uk" target="_blank" class="link-1">Click here</a> for more info about this website created by our special project This is a Bootstrap template that goes with several layout options (for desktop, tablet, smartphone landscape and portrait) to fit all popular screen resolutions. The PSD source files of this template are available for free for the registered members of TemplateMonster.com. Feel free to get them!</p> -->
-<!--           </div> -->
-            </div >
-      </div >
-        </div >
-  </ div>
-     
- 
+
+					<!--============================== slider =================================-->
+					<div class="flexslider">
+						<ul class="slides">
+							<!--             <li> <img  src="/Movie${main.movieImage}" alt=""></li> -->
+							<c:forEach var="main" items="${requestScope.movie}">
+								<li><img src="/Movie${main.movieImage}" alt=""></li>
+							</c:forEach>
+						</ul>
+					</div>
+
+					<span id="responsiveFlag"></span>
+					<div class="block-slogan">
+						<h2>Welcome!</h2>
+						<!--               <div> -->
+						<!--             <p><a href="http://www.oswt.co.uk" target="_blank" class="link-1">Click here</a> for more info about this website created by our special project This is a Bootstrap template that goes with several layout options (for desktop, tablet, smartphone landscape and portrait) to fit all popular screen resolutions. The PSD source files of this template are available for free for the registered members of TemplateMonster.com. Feel free to get them!</p> -->
+						<!--           </div> -->
+					</div>
+				</div>
+			</div>
+		</div>
 </body>
 </html>

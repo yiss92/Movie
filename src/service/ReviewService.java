@@ -101,7 +101,7 @@ public class ReviewService {
 		}
 	}
 
-	public MovieReviewPage gatReviewMovieArticlePage(HttpServletRequest request)
+	public MovieReviewPage getReviewMovieArticlePage(HttpServletRequest request)
 			throws ClassNotFoundException, SQLException {
 		// 현재 요청하는 페이지 파라미터 int로 받아내기
 		String pageStr = request.getParameter("page");
