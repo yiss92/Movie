@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import repository.UserDao;
 import service.MemberService;
 import service.MovieArticleService;
+import vo.MovieArticle;
 import vo.MovieArticlePage;
 import vo.User;
 
@@ -43,7 +45,7 @@ public class MemberServlet extends HttpServlet {
 
 			if (type == null || type.equals("loginForm")) {
 				System.out.println("테스트1");
-				MovieArticlePage movie =MovieSer.getArticlePage5(request);
+				List<MovieArticle> movie =MovieSer.getArticlePage5(request);				
 				System.out.println("테스트2");
 				request.setAttribute("movie", movie);
 				System.out.println("테스트3");

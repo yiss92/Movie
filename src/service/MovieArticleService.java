@@ -181,17 +181,15 @@ public class MovieArticleService {
 //		return result;
 //	}
 	
-	public MovieArticlePage getArticlePage5(HttpServletRequest request){
-		
-		MovieArticlePage result = new MovieArticlePage();
-		
+	public List<MovieArticle> getArticlePage5(HttpServletRequest request){
+
 		MovieDao dao = MovieDao.getInstance();
 		dao.startCon();
 		
 		List<MovieArticle> articleList = dao.selectBest5();
 		dao.closeCon();
 		
-		return new MovieArticlePage(articleList);				
+		return articleList;				
 	}
 	
 	public MovieArticlePage getArticlePage(HttpServletRequest request) throws ClassNotFoundException, SQLException {

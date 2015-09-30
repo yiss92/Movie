@@ -108,7 +108,6 @@ public class MovieDao{
 			String sql = "select m.movie_title, movie_image, director, star, avg(s.score) score from movie_tb m, movie_comment_tb s where m.MOVIE_TITLE=s.MOVIE_TITLE group by movie_title order by avg(s.score) desc limit 1,5;";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
-			rs.next();
 			while (rs.next()) {
 				MovieArticle movieArticle=new MovieArticle();
 				movieArticle.setMovieTitle(rs.getString(1));
@@ -116,6 +115,7 @@ public class MovieDao{
 				movieArticle.setDirector(rs.getString(3));
 				movieArticle.setStar(rs.getString(4));
 				movieArticle.setScore(rs.getDouble(5));
+				result.add(movieArticle);
 			}		
 		}catch(SQLException ex){
 			System.out.println("MovieDao selectBest5 error");
