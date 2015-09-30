@@ -30,7 +30,11 @@
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/touchTouch.jquery.js"></script>
-<script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}	</script>
+<script type="text/javascript">
+	if ($(window).width() > 1024) {
+		document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");
+	}
+</script>
 <style type="text/css">
 .LogInForm {
 	position: relative;
@@ -41,26 +45,66 @@
 </style>
 
 <script>
-	
-		$(function() {
-			$x = $(window).width();
-			if ($x > 1024) {
-				jQuery("#content .row").preloader();
-			}
+	$(function() {
+		$x = $(window).width();
+		if ($x > 1024) {
+			jQuery("#content .row").preloader();
+		}
 
-			jQuery('.magnifier').touchTouch();
-			jQuery('.spinner').animate({
-				'opacity' : 0
-			}, 1000, 'easeOutCubic', function() {
-				jQuery(this).css('display', 'none')
-			});
-			
-			$('#joinBtn').click(function(){
-				document.location.href = "movie?type=joinForm";
-				return false;
-			})
+		jQuery('.magnifier').touchTouch();
+		jQuery('.spinner').animate({
+			'opacity' : 0
+		}, 1000, 'easeOutCubic', function() {
+			jQuery(this).css('display', 'none')
 		});
-	</script>
+
+		$('#joinBtn').click(function() {
+			document.location.href = "movie?type=joinForm";
+			return false;
+		})
+	});
+</script>
+
+<style>
+input.tooltip {
+	position: absolute;
+	visibility: hidden;
+	z-index: 1000;
+	filter: alpha(opacity = 100);
+}
+</style>
+<script>
+	function tooltip_layer_over(id) {
+		var obj = document.getElementById(id);
+		if (obj !== null) {
+			if (window.pageXOffset == undefined) {
+				var left_set = parseInt(window.event.clientX
+						+ document.body.scrollLeft + 2);
+			} else {
+				var left_set = parseInt(window.event.clientX
+						+ document.body.scrollLeft + 2);
+			}
+			if (window.pageYOffset == undefined) {
+				obj.style.pixelTop = parseInt(window.event.clientY
+						+ document.body.scrollTop + 2);
+			} else {
+				var top_set = parseInt(window.event.clientY
+						+ document.body.scrollTop + 2);
+			}
+			$(obj).offset({
+				top : top_set,
+				left : left_set
+			});
+			obj.style.visibility = 'visible';
+		}
+	}
+	function tooltip_layer_out(id) {
+		var obj = document.getElementById(id);
+		if (obj != null) {
+			obj.style.visibility = 'hidden';
+		}
+	}
+</script>
 
 <!--[if lt IE 8]>
   		<div style='text-align:center'><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/img/upgrade.jpg"border="0"alt=""/></a></div>  
@@ -131,17 +175,25 @@
 	<div class="bg-content">
 		<div class="container">
 			<div class="row">
-				<div class="span12">
+				<div class="span12" align="center">
+
 					<!--============================== slider =================================-->
-					<div class="flexslider">
-						<ul class="slides">
+					<div class="flexslider" style="z-index: 1;">
+						<ul class="slides" style="z-index: 1;">
 							<!--             <li> <img  src="/Movie${main.movieImage}" alt=""></li> -->
 							<c:forEach var="main" items="${requestScope.movie}">
-								<li><img src="/Movie${main.movieImage}" alt=""></li>
+								<li><form action="링크" method="post">
+										<input type="image" src="/Movie${main.movieImage}"
+											style="width: 450px; Z-index: 1;"
+											onMouseOver="tooltip_layer_over('${main.movieTitle}')"
+											onMouseMove="tooltip_layer_over('${main.movieTitle}')"
+											onMouseOut="tooltip_layer_out('${main.movieTitle}')">
+										<input type="text" value="내용내용" id="${main.movieTitle}" class="tooltip">
+									</form></li>
+
 							</c:forEach>
 						</ul>
 					</div>
-
 					<span id="responsiveFlag"></span>
 					<div class="block-slogan">
 						<h2>Welcome!</h2>
@@ -152,5 +204,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>
