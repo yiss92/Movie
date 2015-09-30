@@ -76,6 +76,9 @@
     <div class="container">
           <div class="row">
         <article class="span8">
+       
+        	  <form action ="movie" method= "post">
+        	 <br>
         	  <br>
         	  <br>
         	  <br>
@@ -84,9 +87,20 @@
         	  <br>
         	  <br>
         	  <br>
-              <h3>회원정보 수정이 완료되었습니다!</h3>
+          <table>
+               <tr >
+                    <td >삭제할 id: </td >
+                    <td ><input type ="text" name="member_id" size= "10"><br ></td >
+               </tr >
+               
+              
+               <tr >
+                    <td colspan ="2"><input type= "submit" value= "회원탈퇴"></td >
+                    
+               </tr >
+          </table >
+          <br>
               <br>
-              <a href="movie?type=myPage">[회원정보]</a>
               <br>
               <br>
               <br>
@@ -94,9 +108,9 @@
               <br>
               <br>
               <br>
-              <br>
-              <br>
-      		  <br>	
+      		 
+          <input type="hidden" name="type" value="delete" >
+     </form >
             </article>
             </div>
         </div>

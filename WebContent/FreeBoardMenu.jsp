@@ -1,4 +1,7 @@
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -51,17 +54,17 @@
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse_">Menu <span class="icon-bar"></span> </a>
             <div class="nav-collapse nav-collapse_  collapse">
                   <ul class="nav sf-menu">
-                <li><a href="index.html">ìƒì˜ìž‘</a></li>
-                <li><a href="index-1.html">ê°œë´‰ì˜ˆì •</a>
+                <li><a href="index.html">»ó¿µÀÛ</a></li>
+                <li><a href="index-1.html">°³ºÀ¿¹Á¤</a>
 <!--                       <ul> -->
 <!--                     <li><a href="#">Dolore </a></li> -->
 <!--                     <li><a href="#">Consecte</a></li> -->
 <!--                     <li><a href="#">Conseq</a></li> -->
 <!--                   </ul> -->
                     </li>
-                <li><a href="index-2.html">í‰ì </a></li>
-                <li><a href="index-3.html">ë¦¬ë·°</a></li>
-                <li><a href="index-4.html">ê²Œì‹œíŒ</a></li>
+                <li><a href="index-2.html">ÆòÁ¡</a></li>
+                <li><a href="index-3.html">¸®ºä</a></li>
+                <li class="sub-menu active"><a href="index-4.html">°Ô½ÃÆÇ</a></li>
               </ul>
                 </div>
           </div>
@@ -76,27 +79,45 @@
     <div class="container">
           <div class="row">
         <article class="span8">
-        	  <br>
-        	  <br>
-        	  <br>
-        	  <br>
-        	  <br>
-        	  <br>
-        	  <br>
-        	  <br>
-              <h3>íšŒì›ì •ë³´ ìˆ˜ì •ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤!</h3>
-              <br>
-              <a href="movie?type=myPage">[íšŒì›ì •ë³´]</a>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-      		  <br>	
+        <br>
+
+			<table border="1">
+	<tr>
+		 <th width="250" height="50">±Û¹øÈ£</th> <th width="250" height="50">Á¦¸ñ</th> <th width="250" height="50">¾ÆÀÌµð</th> <th width="250" height="50">³¯Â¥</th> 
+<!-- 		 <th>Á¶È¸¼ö</th> -->
+	</tr>
+	
+	<c:choose>
+		<c:when test="${empty requestScope.freeArticlePage.freeList}">
+			<tr>
+				<td colspan="5" height="350"><br><br></td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach var="free" items="${requestScope.freeArticlePage.freeList}">
+				<tr>
+					<td>${free.articleNo}</td>
+					<td><a href="board?type=read&articleNum=${free.articleNo}" >${free.articleTitle}</a></td>
+					<td>${free.userId}</td>
+					<td><fmt:formatDate value="${free.ymd}" pattern="MM/dd"/></td>
+<%-- 					<td>${ar.readCount}</td> --%>
+				</tr>
+			</c:forEach>
+				<tr>
+					<td colspan="5">
+						<c:forEach var="i" begin="${requestScope.freeArticlePage.startArticleNo}" end="${requestScope.freeArticlePage.endArticleNo}">
+							<a href="board?type=list&page=${i}">[${i}]</a>			
+			
+						</c:forEach>
+					</td>
+				</tr>
+		</c:otherwise>
+	</c:choose>
+</table>
+	<a href="board?type=write_form"><button>±Û¾²±â</button></a>
+
+        
+
             </article>
             </div>
         </div>

@@ -82,8 +82,8 @@ public class MemberServlet extends HttpServlet {
 				service.updateMember(request);
 				viewpath = "Update.html";
 //////////////////////////////////////////////////////////////////////////////////////
-			} else if (type.equals("deleteForm")) {
-				viewpath = "DeleteForm.html";
+			} else if (type.equals("deleteFormComplete")) {			// È¸¿øÅ»Åð·Î ¿¬µ¿ÀÌ ¾ÈµÊ
+				viewpath = "deleteFormComplete.html";
 //////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("delete")) {
 				service.deleteMember(request);
