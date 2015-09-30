@@ -38,29 +38,29 @@ public class BoardServlet extends HttpServlet{
                  if ( type == null || type.equals( "list")) {
                      FreeArticlePage freeArticlePage = service.getArticlePage( request);
                       request.setAttribute( "freeArticlePage", freeArticlePage);
-                      viewpath= "list.jsp";
+                      viewpath= "FreeBoardMenu.jsp";
                      
                 } else if( type.equals( "write_form")){
                       viewpath = "FreeBoardWriteForm.jsp";
                       //글쓰기 저장 버튼이 안눌려짐
                 
-                } else if( type.equals( "write")){
+                } else if( type.equals( "write")){			// 글쓰기 완료, 실패
                       int result = service.write( request);
                       request.setAttribute( "result", result);
                       viewpath = "write.jsp";
                      
-                } else if( type.equals( "read")){
+                } else if( type.equals( "read")){			// 글조회
                      FreeArticle free= service.read( request);
                       request.setAttribute( "free", free);
                       viewpath = "read.jsp";
                      
-                } else if( type.equals( "update_form")){
+                } else if( type.equals( "update_form")){	// 글수정 틀(보류)
                      FreeArticle ori= service.readWithOutReadCount( request);
                       session.setAttribute( "num", ori.getArticleNo());
                       request.setAttribute( "ori", ori);
                       viewpath = "update_form.jsp";
                      
-                } else if( type.equals( "update")){
+                } else if( type.equals( "update")){			// 글 수정 완료
                       service.ArticleUpdate( request);
                       viewpath = "correctionPage.jsp";
                      
@@ -69,7 +69,7 @@ public class BoardServlet extends HttpServlet{
                       request.setAttribute( "ori", ori);
                       viewpath = "delete_form.jsp";
                 
-                } else if( type.equals( "delete")){
+                } else if( type.equals( "delete")){			// 글 삭제 완료
                      System. out.println( "delete");                   
                       service.deleteArticle( request);                 
                       viewpath = "delete.jsp";

@@ -96,7 +96,7 @@
                     </div>
 <!--                 <div class="buttons-wrapper"> <a class="btn btn-1" data-type="reset">Clear</a> <a class="btn btn-1" data-type="submit">Send</a></div> -->
               		<div>
-              		<input type="submit" value="save">
+              		<input type="submit" value="save" onclick="document.getElementById('contact-form').submit();">
 					<input type="hidden" name="type" value="write">		
               		</div>
               </fieldset>
