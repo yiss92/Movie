@@ -106,9 +106,14 @@
 							items="${requestScope.movieArticlePage.movieList}">
 							<li class="span4">
 								<div class="thumbnail thumbnail-1">
-									<img src="/Movie${now.movieImage}" alt="">
+<%-- 									<img src="/Movie${now.movieImage}" alt=""> --%>
 									<section>
-										<a href="Mmovie?type=nowMovieRead&title=${now.movieTitle}" class="link-1">${now.movieTitle}</a> (${now.ymd})<br>
+										<form action="Mmovie" method="post">
+											<input type="hidden" name="type" value="nowMovieRead">
+											<input type="hidden" name="title" value="${now.movieTitle}">
+											<input type="image" src="/Movie${now.movieImage}" style="width: 245px;">
+										</form>
+										<font color="orange"><b>${now.movieTitle}</b></font> (${now.ymd})<br>
 										감독 : ${now.director}<br>
 										배우 : ${now.star}<br>
 										평점 : ${now.score}
