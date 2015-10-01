@@ -49,8 +49,6 @@ public class BoardService {
 		article.setContent(content);
 		article.setYmd(new Date());
 
-		System.out.println(temp + title + content);
-		System.out.println(new Date());
 		FreeDao dao = FreeDao.getInstance();
 		dao.startCon();
 
@@ -134,7 +132,6 @@ public class BoardService {
 
 	public void deleteArticle(HttpServletRequest request) throws Exception {		
 		String idStr = request.getParameter("articleNum");
-		System.out.println(idStr);
 		int articleNum = Integer.parseInt(idStr);		
 		//
 		HttpSession session = request.getSession();
@@ -143,8 +140,6 @@ public class BoardService {
 		// HttpSession session = request.getSession();
 		String user = String.valueOf(session.getAttribute("user"));
 
-		System.out.println(idStr);
-		System.out.println(user);
 
 		FreeDao dao = FreeDao.getInstance();
 		dao.startCon();

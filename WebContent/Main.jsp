@@ -163,7 +163,7 @@ input.tooltip {
 									</li>
 									<li><a href="index-2.html">평점</a></li>
 									<li><a href="index-3.html">리뷰</a></li>
-									<li><a href="index-4.html">게시판</a></li>
+									<li><a href="board?type=list">게시판</a></li>
 								</ul>
 							</div>
 						</div>

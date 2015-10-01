@@ -55,15 +55,12 @@ public class FreeDao{
 		try {
 			String sql="insert into free_article_tb( USER_ID, ARTICLE_TITLE, CONTENT, YMD)"
 					+"values(?,?,?,?)";
-			System.out.println("1");
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, freeArticle.getUserId());
 			pstmt.setString(2, freeArticle.getArticleTitle());
 			pstmt.setString(3, freeArticle.getContent());
 			pstmt.setTimestamp(4,new Timestamp(freeArticle.getYmd().getTime()));
-			System.out.println("2");
 			result = pstmt.executeUpdate();
-			System.out.println("3");
 		} catch (SQLException e) {
 			System.out.println("FreeDao insertFree error");
 		}finally{
