@@ -44,11 +44,13 @@ public class BoardServlet extends HttpServlet {
 
 			} else if (type.equals("write_form")) {
 				viewpath = "FreeBoardWriteForm.jsp";
+				
 
 			} else if (type.equals("write")) { // 글쓰기 완료, 실패
 				int result = service.write(request);
+				System.out.println(request);
 				request.setAttribute("result", result);
-				viewpath = "write.jsp";
+				viewpath = "writeResult.jsp";
 
 			} else if (type.equals("read")) { // 글조회
 				FreeArticle free = service.read(request);

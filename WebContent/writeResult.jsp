@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -52,17 +53,17 @@
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse_">Menu <span class="icon-bar"></span> </a>
             <div class="nav-collapse nav-collapse_  collapse">
                   <ul class="nav sf-menu">
-                <li><a href="index.html">»ó¿µÀÛ</a></li>
-                <li><a href="index-1.html">°³ºÀ¿¹Á¤</a>
+                <li><a href="index.html">ìƒì˜ì‘</a></li>
+                <li><a href="index-1.html">ê°œë´‰ì˜ˆì •</a>
 <!--                       <ul> -->
 <!--                     <li><a href="#">Dolore </a></li> -->
 <!--                     <li><a href="#">Consecte</a></li> -->
 <!--                     <li><a href="#">Conseq</a></li> -->
 <!--                   </ul> -->
                     </li>
-                <li><a href="index-2.html">ÆòÁ¡</a></li>
-                <li><a href="index-3.html">¸®ºä</a></li>
-                <li class="sub-menu active"><a href="index-4.html">°Ô½ÃÆÇ</a></li>
+                <li><a href="index-2.html">í‰ì </a></li>
+                <li><a href="index-3.html">ë¦¬ë·°</a></li>
+                <li><a href="index-4.html">ê²Œì‹œíŒ</a></li>
               </ul>
                 </div>
           </div>
@@ -77,31 +78,33 @@
     <div class="container">
           <div class="row">
         <article class="span8">
-              <h3>°Ô½ÃÆÇ</h3>
-              <div class="inner-1">
-            <form id="contact-form" action="board?type=write" method="post">
-<!--                   <div class="success"> Contact form submitted! <strong>We will be in touch soon.</strong> </div> -->
-                  <fieldset>
-                <div>
-                    <label class="name">
-                    <input type="text" name="title">
-                    <br>
-                    </div>
-               
-                <div>
-                    <label class="message">
-                    <textarea name="content">Content</textarea>
-                    <br>
-<!--                     <span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span> </label> -->
-                    </div>
-<!--                 <div class="buttons-wrapper"> <a class="btn btn-1" data-type="reset">Clear</a> <a class="btn btn-1" data-type="submit">Send</a></div> -->
-              		<div>
-              		<input type="submit" value="save" onclick="document.getElementById('contact-form').submit();">
-					<input type="hidden" name="type" value="write">		
-              		</div>
-              </fieldset>
-                </form>
-          </div>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	 <c:if test="${requestScope.result>0}">
+				ê¸€ì“°ê¸°ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.<br>
+				<a href="board?type=list">[ëª©ë¡ìœ¼ë¡œ]</a>
+			 </c:if><br>
+
+			 <c:if test="${requestScope.result==0}">
+			   	ê¸€ì“°ê¸°ê°€ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.<br>
+		 		<a href="board?type=list">[ëª©ë¡ìœ¼ë¡œ]</a>
+			 </c:if>
+			<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
             </article>
             </div>
         </div>
