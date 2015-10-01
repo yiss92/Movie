@@ -36,7 +36,7 @@ public class MovieScorePage {
 		this.endListNo = endListNo;
 	}
 	
-	public List<MovieScore> getScoreListt() {
+	public List<MovieScore> getScoreList() {
 		return scoreList;
 	}
 	public void setScoreList(List<MovieScore> scoreList) {

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	<title>Blog</title>
+	<title>About</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -99,7 +99,6 @@
               <img alt="" src="/Movie${requestScope.soon.movieImage}">  
               <h5>${requestScope.soon.director}</h5>
               <h5>${requestScope.soon.star}</h5>
-              <h5>평점과 한줄평들어올 자리</h5>                             
             </li>  
                         
           

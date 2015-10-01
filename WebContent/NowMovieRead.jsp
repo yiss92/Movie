@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	<title>Services</title>
+	<title>About</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -17,22 +18,24 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/superfish.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>   
+    
 	<script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}	</script>
 	<script>		
 		 jQuery(window).load(function() {	
 		 $x = $(window).width();		
 	if($x > 1024)
 	{			
-	jQuery("#content .row").preloader();    }			 
-		
-		 jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
-		 
+	jQuery("#content .row").preloader();}	
+	
+	jQuery(".list-blog li:last-child").addClass("last"); 
+	jQuery(".list li:last-child").addClass("last"); 
+
+	
+    jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
   		  }); 
-				
-		 
-		 
+					
 	</script>
 
 	<!--[if lt IE 8]>
@@ -50,7 +53,6 @@
 	</head>
 
 	<body>
-	
 <div class="spinner"></div>
 <!--============================== header =================================-->
 <header>
@@ -63,7 +65,7 @@
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse_">Menu <span class="icon-bar"></span> </a>
             <div class="nav-collapse nav-collapse_  collapse">
                   <ul class="nav sf-menu">
-                <li class="sub-menu active"><a href="index.html">상영작</a></li>
+                <li  class="sub-menu active"><a href="index.html">상영작</a></li>
                 <li><a href="index-1.html">개봉예정</a>
 <!--                       <ul> -->
 <!--                     <li><a href="#">Dolore </a></li> -->
@@ -82,32 +84,58 @@
         </div>
   </div>
     </header>
-<div class="bg-content"> 
-      
-      <!--============================== content =================================-->
-      
-      <div id="content"><div class="ic"></div>
+<div class="bg-content">     
+  <!--============================== content =================================-->      
+   <div id="content"><div class="ic"></div>
     <div class="container">
           <div class="row">
-        <article class="span12">
-              <h3>상영작</h3>
-            </article>
-        <div class="clear"></div>
-        <ul class="thumbnails thumbnails-1 list-services">
-             <c:forEach var="now" items="${requestScope.movieArticlePage.movieList}">
-              <li class="span4">
-            <div class="thumbnail thumbnail-1"> <img  src="/Movie${now.movieImage}" alt="">
-                  <section> <a href="Mmovie?type=nowMovieRead&title=${now.movieTitle}" class="link-1">${now.movieTitle}</a>
-                
-              </section>
-                </div>
-          </li>
-            </c:forEach>
-            </ul>
+        <article class="span8">
+         <div class="inner-1">         
+          <ul class="list-blog">
+            <li>  
+            <h3>${requestScope.now.movieTitle} (${requestScope.now.ymd})</h3>     
+<!--             <div class="name-author">by Admin</div> -->
+            <div class="clear"></div>            
+              <img alt="" src="/Movie${requestScope.now.movieImage}">  
+              <h5>${requestScope.now.director}</h5>
+              <h5>${requestScope.now.star}</h5>
+<!--               이것도 표? 작은 리스트? 영화이름이 같을때라는 조건있어야!-->
+				<table border="1">
+					<tr> 
+						<th>평점</th><th>한줄 평</th><th>ID</th>
+					</tr>
+					<c:choose>
+						<c:when test="${empty requestScope.comment.scoreList.movieTitle==requestScope.now.movieTitle}">
+						<tr>
+							<td colspan="3"><br>-<br></td>
+						</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="com" items="${requestScope.comment.scoreList}">
+								<tr>
+								<td>${com.score}</td>
+								<td>${com.comment}</td>
+								<td>${com.userId}</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</table>
+<%--               <h5>${requestScope.comment.scoreList.comment} </h5> --%>
+                                           
+            </li>  
+                        
+          
+                                 
+          </ul>
+          </div>  
+        </article>
+      
       </div>
-        </div>
+     </div>
   </div>
-    </div>
+ </div>
+
 
 </body>
 </html>

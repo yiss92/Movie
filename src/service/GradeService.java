@@ -23,7 +23,7 @@ public class GradeService {
 		return instance;
 	}
 	
-	public static final int COUNT_PER_PAGE = 10;
+	public static final int COUNT_PER_PAGE = 2; //평점은 두개만 
 	
 	public int insertGrade(HttpServletRequest request){
 
@@ -52,11 +52,16 @@ public class GradeService {
 		return result;		
 	}
 	
-	public MovieScorePage gatCommentPageArticlePage(HttpServletRequest request)
+	public MovieScorePage getCommentPageArticlePage(HttpServletRequest request)
 			throws ClassNotFoundException, SQLException {
 		// 현재 요청하는 페이지 파라미터 int로 받아내기
 		String pageStr = request.getParameter("page");
-		String moveTitle = request.getParameter("movieTitle");
+		String movieTitle = request.getParameter("movieTitle");
+//		System.out.println("1001 에러1 :"+pageStr);
+		//pageStr는 movieService와 boardService에서도 null나옴.
+//		System.out.println("1001 에러2: "+movieTitle);
+		//프린트했더니 null로 나옴...
+		
 		int requestPage = 1;
 		if (pageStr != null && pageStr.length() > 0) {
 			requestPage = Integer.parseInt(pageStr);
@@ -81,7 +86,7 @@ public class GradeService {
 
 		int startRow = (requestPage - 1) * COUNT_PER_PAGE;
 		// 현재 페이지에 보여질 글들을 DB에서 조회하기
-		List<MovieScore> articleList = dao.selectScoreList(startRow, COUNT_PER_PAGE, moveTitle);
+		List<MovieScore> articleList = dao.selectScoreList(startRow, COUNT_PER_PAGE, movieTitle);
 
 		// 페이지 하단에 링크할 startPage, endPage 계산
 		int startPage = requestPage - 5;

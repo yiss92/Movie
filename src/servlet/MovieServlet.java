@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import service.GradeService;
 import service.MemberService;
 import service.MovieArticleService;
 import vo.MovieArticle;
 import vo.MovieArticlePage;
+import vo.MovieScorePage;
 import vo.User;
 
 @WebServlet(urlPatterns="/Mmovie")
@@ -38,6 +40,7 @@ public class MovieServlet extends HttpServlet{
 		String viewpath = "";
 
 		MovieArticleService service =MovieArticleService.getInstance();
+		GradeService gSerice = GradeService.getInstance();
 		//HttpSession session = request.getSession(); ///
 
 		try {
@@ -49,11 +52,12 @@ public class MovieServlet extends HttpServlet{
 				
 
 			} else if (type.equals("nowMovieRead")) {
-				//현재상영작에서 영화누르면 영화정보 나오게
-				//아직 페이지없어서 테스트 안해봄.
+				//데이터가 안나옴.
 				MovieArticle now =service.MovieArticleread(request);
 				request.setAttribute("now", now);
-				viewpath = "";
+				MovieScorePage comment = gSerice.getCommentPageArticlePage(request);
+				request.setAttribute("comment", comment);
+				viewpath = "NowMovieRead.jsp";
 		
 			}  else if (type.equals("soonMovie")) {
 				MovieArticlePage movieArticlePage = service.ExpectedPrgetArticlePage(request);
@@ -61,7 +65,6 @@ public class MovieServlet extends HttpServlet{
 				viewpath = "SoonMovie.jsp";
 			
 			} else if (type.equals("soonMovieRead")) {
-				//상영예정에서 영화누르면 영화정보 나오게
 				//데이터가 안나옴
 				MovieArticle soon =service.MovieArticleread(request);
 				request.setAttribute("soon", soon);
