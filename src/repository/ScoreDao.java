@@ -120,7 +120,7 @@ public class ScoreDao {
 		List<MovieScore> result = new ArrayList<>();
 		try{
 			String sql = 
-				"select * from MOVIE_COMMENT_TB where=? order by COMMENT desc limit ?,?";
+				"select * from MOVIE_COMMENT_TB where MOVIE_TITLE=? order by COMMENT_NO desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, movieTitle);
 			pstmt.setInt(2, startRow);

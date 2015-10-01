@@ -1,5 +1,6 @@
 package service;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -66,10 +67,10 @@ public class MovieArticleService {
 		return result;
 	}
 
-	public MovieArticle MovieArticleread(HttpServletRequest request) {
-
+	public MovieArticle MovieArticleread(HttpServletRequest request) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("euc-kr");
+		
 		String title = request.getParameter("title");
-
 		MovieDao dao = MovieDao.getInstance();
 		dao.startCon();
 
@@ -80,6 +81,7 @@ public class MovieArticleService {
 		// result = dao.selectArticle(articleId);
 		// }
 		result = dao.selectMovie(title);
+		
 
 		return result;
 	}

@@ -56,11 +56,7 @@ public class GradeService {
 			throws ClassNotFoundException, SQLException {
 		// 현재 요청하는 페이지 파라미터 int로 받아내기
 		String pageStr = request.getParameter("page");
-		String movieTitle = request.getParameter("movieTitle");
-//		System.out.println("1001 에러1 :"+pageStr);
-		//pageStr는 movieService와 boardService에서도 null나옴.
-//		System.out.println("1001 에러2: "+movieTitle);
-		//프린트했더니 null로 나옴...
+		String movieTitle = request.getParameter("title");
 		
 		int requestPage = 1;
 		if (pageStr != null && pageStr.length() > 0) {

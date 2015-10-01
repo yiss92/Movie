@@ -52,12 +52,10 @@ public class MovieServlet extends HttpServlet{
 				
 
 			} else if (type.equals("nowMovieRead")) {
-				//데이터가 안나옴.
 				MovieArticle now =service.MovieArticleread(request);
-				System.out.println("1"+request);
 				request.setAttribute("now",now);
-//				MovieScorePage comment = gSerice.getCommentPageArticlePage(request);
-//				request.setAttribute("comment", comment);
+				MovieScorePage comment = gSerice.getCommentPageArticlePage(request);
+				request.setAttribute("comment", comment);
 				viewpath = "NowMovieRead.jsp";
 		
 			}  else if (type.equals("soonMovie")) {

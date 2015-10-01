@@ -200,8 +200,8 @@ public class MovieDao{
 				result.setStory(rs.getString(8));
 				result.setReadCount(rs.getInt(9));
 				result.setYmd(rs.getInt(10));
-				result.setYmd(rs.getInt(11));
-				result.setScore(rs.getDouble(12));
+				result.setOpenCheck(rs.getInt(11));
+				result.setScore(rs.getDouble(12));				
 			}
 		} catch (SQLException e) {
 			System.out.println("MovieDao selectMovie error");
