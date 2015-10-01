@@ -111,15 +111,22 @@
           <div class ="span12">
 
 				<!--============================== slider =================================-->
-					<div class="flexslider">
-						<ul class="slides">
+					<div class="flexslider" style="z-index: 1;">
+						<ul class="slides" style="z-index: 1;">
 							<!--             <li> <img  src="/Movie${main.movieImage}" alt=""></li> -->
 							<c:forEach var="main" items="${requestScope.movie}">
-								<li><img src="/Movie${main.movieImage}" alt=""></li>
+								<li><form action="링크" method="post">
+										<input type="image" src="/Movie${main.movieImage}"
+											style="width: 450px; Z-index: 1;"
+											onMouseOver="tooltip_layer_over('${main.movieTitle}')"
+											onMouseMove="tooltip_layer_over('${main.movieTitle}')"
+											onMouseOut="tooltip_layer_out('${main.movieTitle}')">
+										<input type="text" value="내용내용" id="${main.movieTitle}" class="tooltip">
+									</form></li>
+
 							</c:forEach>
 						</ul>
 					</div>
-
 					<span id="responsiveFlag"></span>
 					<div class="block-slogan">
 						<h2>Welcome!</h2>
