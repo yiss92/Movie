@@ -82,13 +82,13 @@ public class MemberServlet extends HttpServlet {
 				service.updateMember(request);
 				viewpath = "Update.html";
 //////////////////////////////////////////////////////////////////////////////////////
-			} else if (type.equals("deleteFormComplete")) {			// È¸¿øÅ»Åð·Î ¿¬µ¿ÀÌ ¾ÈµÊ
+			} else if (type.equals("deleteForm")) {			
 				viewpath = "deleteFormComplete.html";
 //////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("delete")) {
 				service.deleteMember(request);
 				session.invalidate();//
-				viewpath = "Delete.html";
+				viewpath = "withdrawMember.html";
 //////////////////////////////////////////////////////////////////////////////////////
 			} else if (type.equals("logout")) {
 				session.invalidate();//
