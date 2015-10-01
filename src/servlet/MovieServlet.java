@@ -17,7 +17,7 @@ import vo.MovieArticle;
 import vo.MovieArticlePage;
 import vo.MovieScorePage;
 import vo.User;
-
+//
 @WebServlet(urlPatterns="/Mmovie")
 public class MovieServlet extends HttpServlet{
 	
