@@ -100,27 +100,27 @@
               <h5>${requestScope.now.director}</h5>
               <h5>${requestScope.now.star}</h5>
 <!--               이것도 표? 작은 리스트? 영화이름이 같을때라는 조건있어야!-->
-				<table border="1">
-					<tr> 
-						<th>평점</th><th>한줄 평</th><th>ID</th>
-					</tr>
-					<c:choose>
-						<c:when test="${empty requestScope.comment.scoreList.movieTitle==requestScope.now.movieTitle}">
-						<tr>
-							<td colspan="3"><br>-<br></td>
-						</tr>
-						</c:when>
-						<c:otherwise>
-							<c:forEach var="com" items="${requestScope.comment.scoreList}">
-								<tr>
-								<td>${com.score}</td>
-								<td>${com.comment}</td>
-								<td>${com.userId}</td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-				</table>
+<!-- 				<table border="1"> -->
+<!-- 					<tr>  -->
+<!-- 						<th>평점</th><th>한줄 평</th><th>ID</th> -->
+<!-- 					</tr> -->
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${empty requestScope.comment.scoreList.movieTitle==requestScope.now.movieTitle}"> --%>
+<!-- 						<tr> -->
+<!-- 							<td colspan="3"><br>-<br></td> -->
+<!-- 						</tr> -->
+<%-- 						</c:when> --%>
+<%-- 						<c:otherwise> --%>
+<%-- 							<c:forEach var="com" items="${requestScope.comment.scoreList}"> --%>
+<!-- 								<tr> -->
+<%-- 								<td>${com.score}</td> --%>
+<%-- 								<td>${com.comment}</td> --%>
+<%-- 								<td>${com.userId}</td> --%>
+<!-- 								</tr> -->
+<%-- 							</c:forEach> --%>
+<%-- 						</c:otherwise> --%>
+<%-- 					</c:choose> --%>
+<!-- 				</table> -->
 <%--               <h5>${requestScope.comment.scoreList.comment} </h5> --%>
                                            
             </li>  

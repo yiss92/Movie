@@ -54,21 +54,17 @@ public class MovieServlet extends HttpServlet{
 			} else if (type.equals("nowMovieRead")) {
 				//데이터가 안나옴.
 				MovieArticle now =service.MovieArticleread(request);
-				request.setAttribute("now", now);
-				MovieScorePage comment = gSerice.getCommentPageArticlePage(request);
-				request.setAttribute("comment", comment);
+				System.out.println("1"+request);
+				request.setAttribute("now",now);
+//				MovieScorePage comment = gSerice.getCommentPageArticlePage(request);
+//				request.setAttribute("comment", comment);
 				viewpath = "NowMovieRead.jsp";
 		
 			}  else if (type.equals("soonMovie")) {
 				MovieArticlePage movieArticlePage = service.ExpectedPrgetArticlePage(request);
 				request.setAttribute("movieArticlePage", movieArticlePage);
 				viewpath = "SoonMovie.jsp";
-			
-			} else if (type.equals("soonMovieRead")) {
-				//데이터가 안나옴
-				MovieArticle soon =service.MovieArticleread(request);
-				request.setAttribute("soon", soon);
-				viewpath = "SoonMovieRead.jsp";
+		
 				
 			}
 

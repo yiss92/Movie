@@ -108,7 +108,7 @@
 								<div class="thumbnail thumbnail-1">
 									<img src="/Movie${soon.movieImage}" alt="">
 									<section>
-										<a href="Mmovie?type=soonMovieRead&titile=${soon.movieTitle}" class="link-1">${soon.movieTitle}</a> (${soon.ymd})<br>
+										<div class="link-1">${soon.movieTitle}</div> (${soon.ymd})<br>
 										감독 : ${soon.director}<br>
 										배우 : ${soon.star}<br>
 									</section>
