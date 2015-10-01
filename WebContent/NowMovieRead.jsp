@@ -66,7 +66,7 @@
 					<div class="navbar navbar_">
 						<div class="container">
 							<h1 class="brand brand_">
-								<a href="index.html"><img alt="" src="img/MainTopic.JPG">
+								<a href="movie?type=login-1"><img alt="" src="img/MainTopic.JPG">
 								</a>
 							</h1>
 							<a class="btn btn-navbar" data-toggle="collapse"
@@ -74,15 +74,15 @@
 							</a>
 							<div class="nav-collapse nav-collapse_  collapse">
 								<ul class="nav sf-menu">
-									<li class="sub-menu active"><a href="index.html">상영작</a></li>
-									<li><a href="index-1.html">개봉예정</a> <!--                       <ul> -->
+									<li class="sub-menu active"><a href="Mmovie?type=nowMovie">상영작</a></li>
+									<li><a href="Mmovie?type=soonMovie">개봉예정</a> <!--                       <ul> -->
 										<!--                     <li><a href="#">Dolore </a></li> -->
 										<!--                     <li><a href="#">Consecte</a></li> -->
 										<!--                     <li><a href="#">Conseq</a></li> --> <!--                   </ul> -->
 									</li>
 									<li><a href="index-2.html">평점</a></li>
 									<li><a href="index-3.html">리뷰</a></li>
-									<li><a href="index-4.html">게시판</a></li>
+									<li><a href="board?type=list">게시판</a></li>
 								</ul>
 							</div>
 						</div>
@@ -112,9 +112,9 @@
 									
 									<table border="1">
 										<tr>
-											<th width="250" height="30">평점</th>
-											<th width="250" height="30">한줄 평</th>
-											<th width="250" height="30">ID</th>
+											<th width="100" height="30">평점</th>
+											<th width="400" height="30">한줄 평</th>
+											<th width="100" height="30">ID</th>
 										</tr>
 										<c:choose>
 											<c:when test="${empty requestScope.now.movieTitle}">
