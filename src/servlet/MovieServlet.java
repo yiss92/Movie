@@ -69,7 +69,7 @@ public class MovieServlet extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("exception", e);
-			viewpath = "movie_error.html";
+			viewpath = "ErrorPage.html";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewpath);

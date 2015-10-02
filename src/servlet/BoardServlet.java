@@ -55,13 +55,13 @@ public class BoardServlet extends HttpServlet {
 			} else if (type.equals("read")) { // 글조회
 				FreeArticle free = service.read(request);
 				request.setAttribute("free", free);
-				viewpath = "read.jsp";
+				viewpath = "FreeBoardRead.jsp";
 
 			} else if (type.equals("update_form")) { // 글수정 틀(보류)
 				FreeArticle ori = service.readWithOutReadCount(request);
 				session.setAttribute("num", ori.getArticleNo());
 				request.setAttribute("ori", ori);
-				viewpath = "update_form.jsp";
+				viewpath = "FreeBoardUpdateForm.jsp";
 
 			} else if (type.equals("update")) { // 글 수정 완료
 				service.ArticleUpdate(request);
@@ -70,16 +70,16 @@ public class BoardServlet extends HttpServlet {
 			} else if (type.equals("delete_form")) {
 				FreeArticle ori = service.readWithOutReadCount(request);
 				request.setAttribute("ori", ori);
-				viewpath = "delete_form.jsp";
+				viewpath = "FreeBoardDeleteForm.jsp";
 
 			} else if (type.equals("delete")) { // 글 삭제 완료
 //				System.out.println("delete");
 				service.deleteArticle(request);
-				viewpath = "delete.jsp";
+				viewpath = "FreeBoardDelete.jsp";
 			}
 
 		} catch (Exception e) {
-			viewpath = "board_error.jsp";
+			viewpath = "ErrorPage.html";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewpath);
